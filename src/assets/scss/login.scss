@@ -1,0 +1,116 @@
+@import './colors.scss';
+@import './button.scss';
+
+.login {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #f0f4f3;
+  overflow: hidden;
+  &.sign-up-active{ //animations
+    &:after{
+      border-right-color:$pretty-red;
+      transform: scale(1.5);
+    }
+    &:before{
+      background-color: $pretty-yellow;
+      transform: scale(1.5);
+    }
+    .login-form__left{
+      background-color: $pretty-black;
+    }
+    .login-form__sign-up{
+      transform: none;
+      opacity: 1;
+      pointer-events: all;
+    }
+    .login-form__sign-in{
+      opacity: 0;
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 0;
+    height: 0;
+    top:0;
+    border-top: 120px solid transparent;
+    border-bottom: 120px solid transparent;
+    border-right: 180px solid $pretty-yellow-dark;
+    transition: all .6s 0.1s;
+    transform: scale(2.8) rotate(-11deg);
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: -2%;
+    bottom: -16%;
+    width: 21vw;
+    height: 21vw;
+    background: $pretty-green;
+    border-radius: 50%;
+    transition: all .6s 0.1s;
+    transform: scale(2.5);
+  }
+
+  &-form {
+    width: 900px;
+    height: 500px;
+    background-color:white;
+    border-radius: 12px;
+    overflow: hidden;
+    z-index: 9;
+    
+    &__main{
+      padding: 40px 55px 50px 26px;
+    }
+
+    &__left{
+      position: relative;
+      color:white;
+      background-color: $blue;
+      transition: all .6s 0.1s;
+      z-index: 9;
+      &:after{
+        content: '';
+        position: absolute;
+        background-image: url(https://images5.alphacoders.com/344/thumb-1920-344761.jpg);
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+        opacity: 0.2;
+        background-size: cover;
+        background-position: right;
+      }
+    }
+    
+    &__title{
+      font-weight: $fw-700;
+      font-size: 36px;
+      letter-spacing: -0.8px;
+      line-height: 1;
+    }
+    &__desc{
+      font-size: 19px;
+      text-align: center;
+      line-height: 1.3;
+      width: 88%;
+    }
+    &__icon{
+      color: #bfbfbf !important;
+      font-size: 19px;
+    }
+    &__sign-in{
+      position: absolute;
+      transition: all .6s 0.1s;
+    }
+    &__sign-up{
+      opacity: 0;
+      pointer-events: none;
+      transition: all .6s 0.1s;
+    }
+  }
+}

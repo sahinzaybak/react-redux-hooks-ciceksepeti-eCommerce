@@ -1,0 +1,25 @@
+.button{
+  width: 300;
+  border-radius: 6px;
+  border:0;
+  &.transparent{
+    border: 1px solid #f1f0f0;
+    padding: 7px 25px 10px;
+    font-weight: 600;
+  }
+
+  &.green{
+    background: #53ad35;
+    color: white;
+    width: 140px;
+    height: 40px;
+    border-radius: 6px;
+    border: none;
+    font-size: 17px;
+    border: none !important;
+    font-weight: 600;
+    text-shadow: none;
+    box-shadow: none;
+  }
+  
+}

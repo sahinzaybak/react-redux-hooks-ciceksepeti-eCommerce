@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+
+* {
+
+  &,
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+}
+
+*,
+*:focus {
+  outline: none;
+}
+
+html {
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  overflow-x: hidden !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+}
+
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure,
+p,
+pre,
+fieldset,
+ul,
+ol,
+menu,
+form {
+  margin: 0;
+}
+
+button,
+fieldset,
+iframe {
+  border: 0;
+}
+
+fieldset,
+ul,
+ol,
+button,
+menu {
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+textarea {
+  resize: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td {
+  padding: 0;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+a,
+a:focus,
+button,
+button:focus {
+  outline: none !important;
+  text-decoration: none;
+}
+
+a,
+button {
+  user-select: none;
+  transition: all .3s ease-in-out;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  box-shadow: none;
+  border: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+section {
+  padding: 80px 0;
+}
+
+label {
+  margin-bottom: 0;
+}
+
+.custom-container {
+  position: relative;
+  max-width: 1200px;
+  width: 95%;
+  margin: 0 auto;
+  z-index: 9;
+}
+
+.flex-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ant-input{
+  height: 40px;
+  border-radius: 6px;
+  font-size: 17px;
+}
+
+.ant-input-affix-wrapper{
+  border-radius: 6px;
+  &:hover,&:focus{
+    border-color: #6ad049 !important;
+    box-shadow: none !important;
+  }
+}
+
+.ant-btn-primary{
+  
+  border:none !important;
+}
+
+.ant-form-item-control-input-content{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ant-btn-primary:hover, .ant-btn-primary:focus{
+  background-color: #6ad049 !important;
+}
