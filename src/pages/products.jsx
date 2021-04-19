@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import '../assets/scss/products.scss'
 import { connect } from "react-redux"; 
 
 //Components

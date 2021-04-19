@@ -8,7 +8,7 @@ import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'
 import { createPromise } from 'redux-promise-middleware'
 
-import rootReducer from './reducers/rootReducer';
+import rootReducer from './store/reducers/rootReducer';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 

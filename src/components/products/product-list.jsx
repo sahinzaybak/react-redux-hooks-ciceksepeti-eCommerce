@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../assets/scss/product-list.scss'
 import productListIco from '../../assets/images/product-list-ico.svg'
 
 const Categories = () => {
@@ -20,7 +19,10 @@ const Categories = () => {
               </div>
               <div>
                 <p className="product-list__price mb-1">99,90 ₺</p>
-                <a className="button product-list__add-basket flex-center">Sepete Ekle</a>
+                <div className="button product-list__add-basket flex-center">
+                  <div className="spinner-border position-absolute" role="status"></div>
+                  <p>Sepete Ekle</p>
+                </div>
               </div>
             </div>
           </div>    

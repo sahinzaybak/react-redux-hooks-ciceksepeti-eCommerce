@@ -39,13 +39,7 @@
     font-weight: $fw-600;
     border-radius: 22px;
     border: 1px solid $blue-main;
+    cursor: pointer;
   }
-  &__category{
-    background-color: $green-main;
-    width: max-content;
-    font-size: 12px;
-    padding: 1px 10px;
-    border-radius: 6px;
-    color: white;
-  }
+
 }

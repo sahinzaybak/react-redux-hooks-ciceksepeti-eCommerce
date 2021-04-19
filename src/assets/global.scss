@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+@import './scss//colors.scss';
 
 * {
 
@@ -162,4 +163,32 @@ label {
 
 .ant-btn-primary:hover, .ant-btn-primary:focus{
   background-color: #6ad049 !important;
+}
+
+.spinner-border {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-width: 0.05em;
+}
+
+.category{
+  background-color: $green-main;
+  width: max-content;
+  font-size: 12px;
+  padding: 1px 10px;
+  border-radius: 6px;
+  color: white;
+}
+
+.react-rater-star{
+  font-size: 25px;
+  color: #e3eaea;
+}
+
+.react-rater-star.is-active{
+  color:#ffcc65;
+}
+
+.react-rater-star.will-be-active{
+  color:#ffcc65;
 }

@@ -1,15 +1,15 @@
 @import '../colors.scss';
 .header {
   height: 90px;
+  border-bottom: 1px solid #ececec;
   &-search {
     width: 60%;
-    height: 40px;
+    height: 50px;
     margin-left: 5%;
     background: #F7F7F7;
     border: 2px solid #EDF1F2;
     border-radius: $radius-28;
-    padding: 0px 3px 0 15px;
-
+    padding: 0px 4px 0 15px;
     input {
       background-color: transparent;
       width: 100%;
@@ -22,8 +22,8 @@
       border: 2px solid #EDF1F2;
       border-radius: $radius-28;
       color: white;
-      padding: 4px 16px;
-      font-size: 14px;
+      padding: 5px 19px;
+      font-size: 18px;
     }
   }
   &-bag{
@@ -33,7 +33,7 @@
     width: 135px;
     &__text{
       color: white;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: $fw-600;
       letter-spacing: -0.2px;
     }
