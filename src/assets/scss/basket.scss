@@ -1,0 +1,31 @@
+@import './colors.scss';
+.basket{
+  &-item{
+    img{
+      width: 150px;
+      border-radius: 24px;
+      box-shadow: #2d2d2d29 1px 1px 60px 6px;
+    }
+  }
+  .product-detail__sticky{
+    box-shadow: #00000008 1px 1px 60px 6px;
+    bottom:0;
+  } 
+  &-summary{
+    border: 1px solid #dedddd;
+    padding: 20px;
+    border-radius: 12px;
+    &__item{
+      border-bottom: 1px solid #f1f1f1;
+      padding: 8px 0px;
+    }
+    &__label{
+      font-size: 18px;
+    }
+    &__value{
+      font-size: 20px;
+      color: $green-main;
+      font-weight: $fw-600;
+    }
+  }
+}

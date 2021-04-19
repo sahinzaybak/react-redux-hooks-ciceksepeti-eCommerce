@@ -1,7 +1,11 @@
 @import '../colors.scss';
 .header {
+  position: sticky;
+  top:0;
   height: 90px;
   border-bottom: 1px solid #ececec;
+  background-color: white;
+  z-index: 999;
   &-search {
     width: 60%;
     height: 50px;
@@ -45,6 +49,37 @@
       top: -10px;
       color: white;
       font-weight: $fw-600;
+    }
+  }
+  &-progress{
+    position: absolute;
+    width: 343px;
+    height: 64px;
+    background-color: #F54257;
+    right: 0;
+    border-radius: 12px;
+    margin-top: 10px;
+    padding: 14px;
+    &:after{
+      content: '';
+      position: absolute;
+      top: -5px;
+      right: 15%;
+      border-radius: 23px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 5px;
+      border-color: #f54157 transparent transparent #f54157;
+      border-radius: 3px 0px 0px 0px;
+      transform: rotate(45deg);
+      
+    }
+    &__title{
+      font-size: 15px;
+      font-weight: $fw-600;
+      color:white;
+
     }
   }
 }

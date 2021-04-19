@@ -14,7 +14,7 @@ const Categories = () => {
             <div className="product-list__item d-flex flex-column justify-content-between">
               <div>
                 <img src="https://cdn03.ciceksepeti.com/cicek/kc953218-1/L/efsane-sevimli-maymun-pelus-80-cm-kc953218-1-445ae385357b42b2839a68c0eebd8680.jpg" alt=""/>
-                <p className="product-list__category mt-2">Moda, Aksesuar</p>
+                <p className="category mt-2">Moda, Aksesuar</p>
                 <h2 className="product-list__name mt-2">Efsane Sevimli Maymun Peluş 80 Cm</h2>
               </div>
               <div>

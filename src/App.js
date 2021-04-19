@@ -5,6 +5,7 @@ import loginPage from './pages/login.jsx'
 import Header from './components/shared/header.jsx'
 import productsPage from './pages/products.jsx'
 import productDetailPage from './pages/product-detail.jsx'
+import basketPage from './pages/basket.jsx'
 
 //Global css
 import 'bootstrap/dist/css/bootstrap.css';
@@ -17,6 +18,7 @@ function App() {
       <Route exact path='/' component={loginPage}></Route>
       <Route exact path='/products' component={productsPage}></Route>
       <Route exact path='/product-detail' component={productDetailPage}></Route>
+      <Route exact path='/basket' component={basketPage}></Route>
     </div>
   );
 }

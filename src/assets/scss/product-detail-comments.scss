@@ -1,0 +1,59 @@
+@import './colors.scss';
+.comments{
+  &-wrp{
+    width: 80%;
+    margin: 0 auto;
+    padding: 40px;
+    border: 1px solid #e6e6e6;
+    border-radius: 12px;
+    box-shadow: #096dd914 1px 1px 60px 6px;
+  }
+  &-item{
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e6e6e6;
+    &:last-child{
+      padding:0;
+      margin: 0;
+      border-bottom: 0;
+    }
+    &__avatar{
+     width: 60px !important;
+     height: 60px !important;
+     div{
+       font-size: 20px !important;
+     }
+    }
+    &__name{
+      font-size: 18px;
+      font-weight: 600;
+    }
+    &__text{
+      width: 80%;
+      color: #676767;
+    }
+  }
+}
+
+.button-modal{
+  padding: 9px;
+    display: block;
+    text-align: center;
+    margin-left: auto;
+}
+
+.ant-modal-content .react-rater-star{
+  font-size: 40px;
+}
+
+textarea{
+  height: 150px !important;
+}
+
+
+.ant-modal-header{
+  background-color: transparent;
+}
+.ant-modal-content{
+  border-radius: 12px;
+}

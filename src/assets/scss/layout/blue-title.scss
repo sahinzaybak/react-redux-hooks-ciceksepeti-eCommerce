@@ -1,11 +1,9 @@
-@import '../colors.scss';
-.bread-crumb{
+.blue-title{
+  width: 100%;
+  height: 74px;
+  background-image: url('../../images/blue-title-bg.png');
+  background-size: cover;
   &__text{
-    font-size: 13px;
-    color: #555555;
-    padding: 6px 0;
-    &--active{
-      color:$green-main;
-    }
+    font-size: 32px;
   }
 }

@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react'
 import '../../assets/scss/layout/header.scss'
 import logo from '../../assets/images/logo.svg'
-import search from '../../assets/images/search.svg'
-import shoppBag from '../../assets/images/shop-bag.svg'
+
+//Components
+import Search from '../header/search'
+import Basket from '../header/basket'
+import ProgressBar from '../header/progress'
 
 class header extends PureComponent {
   render() {
@@ -14,18 +17,11 @@ class header extends PureComponent {
               <div className="header-logo">
                 <img src={logo} alt=""/>
               </div>
-              <div className="header-search d-flex align-items-center">
-                <img src={search} alt=""/>
-                <input type="text" placeholder="Ürün Ara.."/>
-                <a href="#" className="button header-search__button">Ara</a>
-              </div>
+              <Search />
             </div>
-            <div className="button header-bag cursor-pointer flex-shrink-0 flex-center">
-              <img src={shoppBag} className="mr-1" alt=""/>
-              <p className="header-bag__text">Sepetim</p>
-              <span className="header-bag__count position-absolute flex-center">2</span>
-            </div>
+            <Basket />
           </div>
+         <ProgressBar />
         </div>
       </div>
     )
