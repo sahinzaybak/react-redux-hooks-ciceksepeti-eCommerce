@@ -27,7 +27,7 @@ const signUp = props => {
           <Input  prefix={<LockOutlined className="login-form__icon" />}  type="password" placeholder="Şifreniz" />
         </Form.Item>
         <Form.Item className="d-flex justify-content-end">
-          <Button className="button green" type="primary" htmlType="submit">Giriş Yap</Button>
+          <Button className="button-ant green" type="primary" htmlType="submit">Giriş Yap</Button>
         </Form.Item>
       </Form>
     </div>

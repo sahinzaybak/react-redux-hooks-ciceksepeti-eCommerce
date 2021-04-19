@@ -1,0 +1,51 @@
+@import './colors.scss';
+.product-list{
+  &-title{
+    font-size: 20px;
+    color: #707070;
+    font-weight: $fw-300;
+  }
+  &__wrp{
+    margin: 0 -15px 0 -15px;
+  }
+  &__cell{
+    width: calc(100% / 5);
+    padding: 0 15px 30px 15px;
+  }
+  &__item{
+    height: 386px;
+    padding: 12px;
+    background:white;
+    border: 1px solid #E2E7E9;
+    border-radius: 10px;
+    img{
+      border-radius: 10px;
+    }
+  }
+  &__name{
+    font-size:15px;
+    color: #555555;
+    font-weight: $fw-600;
+  }
+  &__price{
+    font-size: 22px;
+    color: #e37d34;
+    font-weight: $fw-600;
+  }
+  &__add-basket{
+    height: 34px;
+    color: $blue-main;
+    font-size: 15px;
+    font-weight: $fw-600;
+    border-radius: 22px;
+    border: 1px solid $blue-main;
+  }
+  &__category{
+    background-color: $green-main;
+    width: max-content;
+    font-size: 12px;
+    padding: 1px 10px;
+    border-radius: 6px;
+    color: white;
+  }
+}

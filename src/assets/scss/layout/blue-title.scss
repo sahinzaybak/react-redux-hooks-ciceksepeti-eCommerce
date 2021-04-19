@@ -1,0 +1,9 @@
+.blue-title{
+  width: 100%;
+  height: 65px;
+  background-image: url('../../images/blue-title-bg.png');
+  background-size: cover;
+  &__text{
+    font-size: 32px;
+  }
+}

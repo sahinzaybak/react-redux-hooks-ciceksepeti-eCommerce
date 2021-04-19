@@ -1,0 +1,11 @@
+@import '../colors.scss';
+.bread-crumb{
+  &__text{
+    font-size: 12px;
+    color: #555555;
+    padding: 6px 0;
+    &--active{
+      color:$green-main;
+    }
+  }
+}

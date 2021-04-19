@@ -1,14 +1,20 @@
 import React, { PureComponent } from "react";
-import propTypes from "prop-types";
-import { connect } from "react-redux"; //redux ile bağlantı kurmak için connect gerekli.
+import { connect } from "react-redux"; 
 
-class examplePage extends PureComponent {
-  static propTypes = {};
+//Components
+import BlueTitle from '../components/products/blue-title'
+import BreadCrumb from '../components/products/bread-crumb'
+import Categories from '../components/products/categories'
+import ProductList from '../components/products/product-list'
 
+class products extends PureComponent {
   render() {
     return (
       <div>
-        <h2>Çalışıyor... </h2>
+        <BlueTitle text="Çiçek Sepeti" />
+        <BreadCrumb />
+        <Categories />
+        <ProductList />
       </div>
     );
   }
@@ -20,4 +26,4 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(examplePage);
+export default connect(mapStateToProps, mapDispatchToProps)(products);

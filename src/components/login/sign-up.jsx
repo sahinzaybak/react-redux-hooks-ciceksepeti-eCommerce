@@ -30,7 +30,7 @@ const signIn = (props) => {
           <Input  prefix={<LockOutlined className="login-form__icon" />}  type="password" placeholder="Şifreniz" />
         </Form.Item>
         <Form.Item className="d-flex justify-content-end">
-          <Button className="button green" type="primary" htmlType="submit">Üye Ol</Button>
+          <Button className="button-ant green" type="primary" htmlType="submit">Üye Ol</Button>
         </Form.Item>
       </Form>
    </div>
