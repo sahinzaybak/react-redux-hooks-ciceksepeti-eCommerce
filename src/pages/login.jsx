@@ -14,13 +14,11 @@ class login extends PureComponent {
     signInDesc: "Çiçek Sepetinin renkli dünyasına göz atmak için hemen Giriş Yapın.",
     signOutDesc: "Çiçek Sepetinin Renkli dünyasını keşfetmek için hemen Üye Olun."
   }
-
   signUpActice = () => {
     this.setState({
       isActiveSignUp: !this.state.isActiveSignUp
     })
   }
-
   render() {
     return (
       <div className={`login ${this.state.isActiveSignUp ? "sign-up-active" : ""}`}>

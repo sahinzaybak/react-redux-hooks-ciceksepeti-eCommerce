@@ -3,7 +3,7 @@ import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import "antd/dist/antd.css";
 
-const signIn = (props) => {
+const signUp= (props) => {
   const validateMessages = {
     required: 'E-mail alanı boş bırakılmaz!',
     types: {
@@ -37,4 +37,4 @@ const signIn = (props) => {
   );
 };
 
-export default signIn
+export default signUp

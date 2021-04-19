@@ -19,7 +19,7 @@ const Categories = () => {
               </div>
               <div>
                 <p className="product-list__price mb-1">99,90 ₺</p>
-                <div className="button product-list__add-basket flex-center">
+                <div className="button product-list__add-basket d-flex-center">
                   <div className="spinner-border position-absolute" role="status"></div>
                   <p>Sepete Ekle</p>
                 </div>

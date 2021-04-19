@@ -1,9 +1,19 @@
 import React from 'react';
+import {useSelector, useDispatch} from 'react-redux'
+import { useHistory } from "react-router";
+import { store } from 'react-notifications-component';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import "antd/dist/antd.css";
 
-const signUp = props => {
+//Actions
+import {fetchSignIn} from '../../store/actions/auth'
+ 
+let isSignInPermission;
+const SignIn = (props) => {
+  isSignInPermission = useSelector(state => state.auth.isSıgnIn)
+  const dispatch = useDispatch()
+  const history = useHistory();
   const validateMessages = {
     required: 'E-mail alanı boş bırakılmaz!',
     types: {
@@ -11,15 +21,51 @@ const signUp = props => {
     },
   };
 
-  const onFinish = (values) => {
-    console.log('Success:', values);
+  const onSignIn = async (values) => { //Kullanıcı Girişi
+    await dispatch(fetchSignIn(values.email, values.password))
+    if(isSignInPermission) {
+      store.addNotification({
+        message: "Giriş başarılı, yönlendiriliyorsunuz...",
+        type: "success",
+        insert: "top",
+        width:300,
+        showIcon:true,
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 2500,
+          onScreen: false
+        },
+      })
+      setTimeout(() => {
+          history.push("/products")
+          localStorage.setItem('login', values.email)
+      }, 2800);
+    }
+    else{
+      store.addNotification({
+        message: "Lütfen doğru bilgileri girdiğinizden emin olun!",
+        type: "danger",
+        insert: "top",
+        width:350,
+        showIcon:true,
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 3000,
+          onScreen: false
+        },
+      })
+    }
   };
 
   return (
     <div className="login-form__sign-in">
       <h1 className="login-form__title mb-3">Giriş yapın.</h1>
       <p className="login-form__desc text-left mb-4">Sistemimize üyeyseniz hemen giriş yapabilirsiniz.</p>
-      <Form name="basic" initialValues={{ remember: true }} onFinish={onFinish} validateMessages={validateMessages}>
+      <Form name="basic" initialValues={{ remember: true }} onFinish={onSignIn} validateMessages={validateMessages}>
         <Form.Item  name="email" rules={[{ required: true, type: 'email'}]}>
           <Input prefix={<UserOutlined className="login-form__icon" />} placeholder="E-mail adresiniz"/>
         </Form.Item>
@@ -34,4 +80,4 @@ const signUp = props => {
   );
 };
 
-export default signUp
+export default SignIn

@@ -132,7 +132,7 @@ label {
   z-index: 9;
 }
 
-.flex-center{
+.d-flex-center{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -191,4 +191,10 @@ label {
 
 .react-rater-star.will-be-active{
   color:#ffcc65;
+}
+
+.notification__message {
+  max-width: auto !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
 }
