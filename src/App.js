@@ -17,8 +17,9 @@ function App() {
       <Route path="/" render={(props) => (props.location.pathname !== "/") && <Header />}></Route>
       <Route exact path='/' component={loginPage}></Route>
       <Route exact path='/products' component={productsPage}></Route>
-      <Route exact path='/product-detail' component={productDetailPage}></Route>
+      <Route exact path='/detail/:slug' component={productDetailPage}></Route>
       <Route exact path='/basket' component={basketPage}></Route>
+      
     </div>
   );
 }

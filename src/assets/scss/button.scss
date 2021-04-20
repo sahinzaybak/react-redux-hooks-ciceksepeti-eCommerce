@@ -11,7 +11,7 @@
   &.green{
     background: #51B549;
     color: white;
-    width: 140px;
+    width: 140px !important;
     height: 40px;
     border-radius: 6px;
     border: none;
@@ -20,6 +20,7 @@
     font-weight: 600;
     text-shadow: none;
     box-shadow: none;
+    visibility: inherit !important;
   }
 }
 

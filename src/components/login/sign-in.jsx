@@ -8,22 +8,24 @@ import "antd/dist/antd.css";
 
 //Actions
 import {fetchSignIn} from '../../store/actions/auth'
+import { useState } from 'react';
  
 let isSignInPermission;
 const SignIn = (props) => {
+  const [loading, setLoading] = useState(false);
   isSignInPermission = useSelector(state => state.auth.isSıgnIn)
   const dispatch = useDispatch()
   const history = useHistory();
+
   const validateMessages = {
     required: 'E-mail alanı boş bırakılmaz!',
-    types: {
-      email: 'Lütfen email formatında bir mail adresi giriniz.',
-    },
+    types: { email: 'Lütfen email formatında bir mail adresi giriniz.' },
   };
 
   const onSignIn = async (values) => { //Kullanıcı Girişi
     await dispatch(fetchSignIn(values.email, values.password))
     if(isSignInPermission) {
+      setLoading(true)
       store.addNotification({
         message: "Giriş başarılı, yönlendiriliyorsunuz...",
         type: "success",
@@ -73,7 +75,12 @@ const SignIn = (props) => {
           <Input  prefix={<LockOutlined className="login-form__icon" />}  type="password" placeholder="Şifreniz" />
         </Form.Item>
         <Form.Item className="d-flex justify-content-end">
-          <Button className="button-ant green" type="primary" htmlType="submit">Giriş Yap</Button>
+        <div className="d-flex-center">
+          <div className={`spinner-border position-absolute color-white ${!loading ? "d-none" : ""}`}role="status"></div>
+            <Button className="button-ant green" type="primary" htmlType="submit">
+              {!loading && "Giriş Yap"}
+            </Button>
+          </div>
         </Form.Item>
       </Form>
     </div>

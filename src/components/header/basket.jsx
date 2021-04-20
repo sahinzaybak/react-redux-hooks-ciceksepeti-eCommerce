@@ -11,5 +11,4 @@ const Search = ({text}) => {
   );
 };
 
-
 export default Search;

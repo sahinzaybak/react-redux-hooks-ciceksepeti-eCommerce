@@ -20,16 +20,23 @@
     border-radius: 10px;
     img{
       border-radius: 10px;
+      height: 200px;
+      object-fit: cover;
     }
   }
   &__name{
     font-size:15px;
     color: #555555;
     font-weight: $fw-600;
+    height: 35px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   &__price{
     font-size: 22px;
-    color: #e37d34;
+    color: #1f1f1f;
     font-weight: $fw-600;
   }
   &__add-basket{

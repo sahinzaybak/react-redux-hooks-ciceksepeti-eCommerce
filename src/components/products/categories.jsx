@@ -2,7 +2,7 @@ import React from 'react';
 import '../../assets/scss/categories.scss'
 import categories from '../../assets/images/category.svg'
 
-const ProductList = () => {
+const Categories = ({categoryList}) => {
   return (
     <div class="categories mt-2">
       <div className="custom-container">
@@ -12,23 +12,13 @@ const ProductList = () => {
         </div>
         <div className="categories-wrp d-flex flex-wrap">
           <a className="categories-item"><p className="categories-item--active">Tüm Kategoriler</p></a>
-          <a className="categories-item"><p>TElektronik</p></a>
-          <a className="categories-item"><p>TEv ve Yaşam</p></a>
-          <a className="categories-item"><p>TEvcil Hayvan</p></a>
-          <a className="categories-item"><p>TTüm Kategoriler</p></a>
-          <a className="categories-item"><p>TElektronik</p></a>
-          <a className="categories-item"><p>TEv ve Yaşam</p></a>
-          <a className="categories-item"><p>TEvcil Hayvan</p></a>
-          <a className="categories-item"><p>TTüm Kategoriler</p></a>
-          <a className="categories-item"><p>TElektronik</p></a>
-          <a className="categories-item"><p>TEv ve Yaşam</p></a>
-          <a className="categories-item"><p>TEvcil Hayvan</p></a>
-          <a className="categories-item"><p>TEv ve Yaşam</p></a>
-          <a className="categories-item"><p>TEvcil Hayvan</p></a>
+          {categoryList.map((category) =>
+            <a className="categories-item"><p>{category.categoryName}</p></a>
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-export default ProductList;
+export default Categories;

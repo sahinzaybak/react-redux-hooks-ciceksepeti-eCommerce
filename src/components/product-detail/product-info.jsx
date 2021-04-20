@@ -2,19 +2,19 @@ import React from "react";
 import Rater from 'react-rater'
 import 'react-rater/lib/react-rater.css'
 
-const ProductInfo = () => {
+const ProductInfo = ({productDetail}) => {
   return (
     <div className="col-md-6">
       <div className="product-detail__wrp pl-4">
         <p className="category mb-1">Hediye</p>
-        <h1 className="product-detail__name">Nutellalı Yılbaşı Hediye Kutusu</h1>
+        <h1 className="product-detail__name">{productDetail[0].slug}</h1>
         <div className="d-block">
           <Rater total={5} rating={2} interactive={false} />
           <p>(13) Yorum</p>
         </div>
         <div className="d-block mt-3">
           <span className="product-detail__titles">Ürün Açıklaması</span>
-          <p className="product-detail__desc mt-2">Sınırlayı olmayan ve istediği tüm hayalleri gerçekleştirmek isteyen kadınlar için özel olarak tasarlanmıştır. Notalarında bulunan, siyah orkidenin gizemli etkisi ve büyüleyici çekiciliği birleşecek kokunuzla etrafınızdaki herkesi büyülemenizi sağlayacak. Calvin Klein Euphoria EDP Bayan Parfüm, 100 ml'lik kullanım hacmi ve eşsiz kokusu ile uzun süre size eşlik edecek. Baştan çıkarıcı bu çiçek bahçesinde dolanırken çok keyif alacaksınız.</p>
+          <p className="product-detail__desc mt-2" dangerouslySetInnerHTML={{ __html: productDetail[0].description}}></p>
         </div>
 
         <div className="d-block mt-4">
@@ -30,7 +30,7 @@ const ProductInfo = () => {
 
         <div className="d-block mt-4">
           <span className="product-detail__titles">Ürün Sahibi</span>
-          <p className="product-detail__desc mt-2">Bu ürün <u>Ayıcık Dükkanı</u> tarafından gönderilecektir.</p>
+          <p className="product-detail__desc mt-2">Bu ürün <u>{productDetail[0].company}</u> tarafından gönderilecektir.</p>
         </div>
       </div>
   </div>

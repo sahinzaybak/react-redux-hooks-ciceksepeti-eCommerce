@@ -8,17 +8,32 @@ import ProductDetail from '../components/product-detail/product-info'
 import ProductComments from '../components/product-detail/product-comments'
 import ProductStickyAddBasket from '../components/product-detail/product-sticky-add-basket'
 
-class products extends PureComponent {
+
+//Actions
+import {fetchProductDetail} from '../store/actions/products'
+
+class productDetail extends PureComponent {
+  componentDidMount() {
+    const slug = this.props.match.params.slug; 
+    this.props.fetchProductDetail(slug);
+  }
   render() {
     return (
       <div className="product-detail">
         <div className="custom-container">
-          <ProductStickyAddBasket />
-          <div className="row">
-            <ProductImage />
-            <ProductDetail />
-          </div>
-          <ProductComments />
+          {this.props.productDetail.length != 0 &&
+            <>
+              <ProductStickyAddBasket 
+                productName={this.props.productDetail[0].slug} 
+                productImage={this.props.productDetail[0].image} 
+                productPrice={this.props.productDetail[0].price}/>
+              <div className="row"> 
+                <ProductImage productImage={this.props.productDetail[0].image} />
+                <ProductDetail productDetail={this.props.productDetail} />
+              </div>
+              <ProductComments productComments={this.props.productDetail[0].comments}/>
+            </>
+        }
         </div>
       </div>
     );
@@ -26,9 +41,13 @@ class products extends PureComponent {
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    productDetail:state.products.productDetail
+  };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  fetchProductDetail
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(products);
+export default connect(mapStateToProps, mapDispatchToProps)(productDetail);

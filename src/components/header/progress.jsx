@@ -5,7 +5,7 @@ import flash from '../../assets/images/flash.svg'
 const ProgressBar = ({text}) => {
   const [progressPercent, setProgressPercent] = useState(75)
   return (
-    <div className="header-progress">
+    <div className="header-progress d-none">
       <div className="d-flex">
         <img src={flash} alt=""/> 
         <p className="header-progress__title ml-1">50 TL ürün daha ekleyin, kargonuz bedava!</p>
