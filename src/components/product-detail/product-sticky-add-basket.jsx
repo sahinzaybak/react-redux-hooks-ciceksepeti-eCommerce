@@ -7,7 +7,7 @@ const ProductStickyAddBasket = ({productName, productImage, productPrice}) => {
         <img src={productImage} width={50} alt=""/>
         <p className="product-detail__sticky-name ml-3 pt-3">{productName}</p>
       </div>
-      <div className="product-detail__sticky-quantity d-flex">
+      <div className="quantity d-flex">
         <p className="quantity-action">-</p>
         <p className="quantity-value text-center">1</p>
         <p className="quantity-action">+</p>

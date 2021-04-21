@@ -80,27 +80,5 @@
       color: #262626;
       font-weight: $fw-600;
     }
-
-    &-quantity {
-      width: 172px;
-      height: 40px;
-      border: 1px solid #E2E7E9;
-      border-radius: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 24px;
-      padding: 0px 4px;
-      font-size: 23px;
-      .quantity-action {
-        width: 35px;
-        height: 35px;
-        background-color: #f3f3f3;
-        font-size: 23px;
-        border-radius: 100%;
-        text-align: center;
-        font-weight: 600;
-      }
-    }
   }
 }

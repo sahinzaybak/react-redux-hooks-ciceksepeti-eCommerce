@@ -76,7 +76,7 @@ const SignIn = (props) => {
         </Form.Item>
         <Form.Item className="d-flex justify-content-end">
         <div className="d-flex-center">
-          <div className={`spinner-border position-absolute color-white ${!loading ? "d-none" : ""}`}role="status"></div>
+          <div className={`spinner-border position-absolute color-white ${!loading ? "d-none" : ""}`} role="status"></div>
             <Button className="button-ant green" type="primary" htmlType="submit">
               {!loading && "Giriş Yap"}
             </Button>
