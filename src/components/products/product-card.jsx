@@ -3,24 +3,24 @@ import {useSelector, useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom';
 
 //Actions
-import {fetchAddBasket} from '../../store/actions/basket'
+import {fetchAddBasket, fetchBasketItemActionCount} from '../../store/actions/basket'
 
 let basketList;
-const ProductCard = ({product}) => {
+const ProductCard = ({product,productIndex}) => {
   basketList = useSelector(state => state.basket.basketList)
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [showCount, setShowCount] = useState(false)
   const [addBasketText, setAddBasketText] = useState("Sepete Ekle")
   const [productCount, setProductCount] = useState(1)
-  const [changedPrice, setChangedPrice] = useState(0)
-
-  if(basketList.length != 0)
-    localStorage.setItem("basket", JSON.stringify(basketList)); // state basketList yenilendiğinde localStorage'de yenilenir.
 
   async function addBasket(){
     await dispatch(fetchAddBasket(product));
     localStorage.setItem("basket", JSON.stringify(basketList)); 
+  }
+
+  function actionCount (productCount, productId){
+    dispatch(fetchBasketItemActionCount(productCount, productId));
   }
 
   return (
@@ -49,9 +49,17 @@ const ProductCard = ({product}) => {
             </div>
             :
             <div className="quantity d-flex w-100">
-              <p className="quantity-action" onClick={() => setProductCount(productCount -1)}>-</p>
+              <p className="quantity-action" onClick={() => {
+                setProductCount(productCount -1); 
+                actionCount(productCount -1, product.id)} 
+                }>
+              -</p>
               <p className="quantity-value text-center">{productCount}</p>
-              <p className="quantity-action" onClick={() => setProductCount(productCount +1)}>+</p>
+              <p className="quantity-action" onClick={() => {
+                setProductCount(productCount +1); 
+                actionCount(productCount +1, product.id); 
+                }}>
+              +</p>
             </div>
           }
         </>

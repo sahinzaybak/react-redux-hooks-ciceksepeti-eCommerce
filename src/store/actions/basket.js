@@ -2,7 +2,10 @@ export const fetchAddBasket = (product) => {
   return async dispatch => {
     dispatch({
       type: "FETCH_ADD_BASKET",
-      payload: product
+      payload: {
+        product,
+        count:1
+      }
     });
   };
 }
@@ -16,3 +19,15 @@ export function getBasketStorage() {
   };
 }
 
+export function fetchBasketItemActionCount(productCount, productId) {
+  debugger;
+  return async dispatch => {
+    dispatch({
+      type: "FETCH_BASKET_ACTION_COUNT_ITEM",
+      payload: {
+        productCount:productCount,
+        productId:productId
+      }
+    });
+  };
+}

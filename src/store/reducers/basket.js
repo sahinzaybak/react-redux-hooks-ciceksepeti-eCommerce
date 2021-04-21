@@ -1,5 +1,6 @@
 const initialState = {
-  basketList:[]
+  basketList:[],
+  activeBasketList:false,
 }
 
 export default (state = initialState, action) => {
@@ -23,6 +24,31 @@ export default (state = initialState, action) => {
         ...state,
         basketList: action.payload
     }
+
+    case "BASKET_LIST_OPEN":
+      return{
+        ...state,
+        activeBasketList: action.payload
+    }
+
+    case "BASKET_ITEM_DELETE":
+      const newBasketList = [...state.basketList]
+      newBasketList.splice(action.payload, 1);
+      return{
+        ...state,
+        basketList: newBasketList 
+    }
+
+    case "FETCH_BASKET_ACTION_COUNT_ITEM":
+      const defaultBasketList = [...state.basketList]
+      defaultBasketList.forEach(element => {
+        if(element.product.id == action.payload.productId) element.count = action.payload.productCount
+      });
+      return{
+        ...state,
+        basketList: [...state.basketList] 
+      }
+
     default:
       return state;
   }

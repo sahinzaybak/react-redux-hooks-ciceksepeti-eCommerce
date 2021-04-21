@@ -6,6 +6,7 @@ import logo from '../../assets/images/logo.svg'
 import Search from '../header/search'
 import Basket from '../header/basket'
 import ProgressBar from '../header/progress'
+import BasketSticky from './basket-list-siticky'
 
 class header extends PureComponent {
   render() {
@@ -23,6 +24,7 @@ class header extends PureComponent {
           </div>
          <ProgressBar />
         </div>
+        <BasketSticky /> 
       </div>
     )
   }

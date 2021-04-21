@@ -10,13 +10,16 @@ const Basket = () => {
   const dispatch = useDispatch() 
   basketList = useSelector(state => state.basket.basketList)
 
+  if(basketList.length != 0)
+    localStorage.setItem("basket", JSON.stringify(basketList)); // state basketList yenilendiğinde localStorage'de yenilenir.
+
   useEffect(() => {
-    if(JSON.parse(localStorage.getItem("basket")) != null)
+    if(JSON.parse(localStorage.getItem("basket")) != null) //localStorge basket bilgilerini al ve basketList state'ni doldur.
       dispatch(getBasketStorage());
   }, []);
  
   return (
-    <div className="button header-bag cursor-pointer flex-shrink-0 d-flex-center">
+    <div className="button header-bag flex-shrink-0 d-flex-center" onClick={() => dispatch({ type: 'BASKET_LIST_OPEN' , payload: true })}>
       <img src={shoppBag} className="mr-1" alt=""/>
       <p className="header-bag__text">Sepetim</p>
       <span className="header-bag__count position-absolute d-flex-center">
