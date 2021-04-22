@@ -16,7 +16,7 @@ const ProductCard = ({product}) => {
   const [productCount, setProductCount] = useState(1)
 
   async function addBasket(){
-    await dispatch(fetchAddBasket(product));
+    await dispatch(fetchAddBasket(product,defaultPrice));
     localStorage.setItem("basket", JSON.stringify(basketList)); 
   }
 

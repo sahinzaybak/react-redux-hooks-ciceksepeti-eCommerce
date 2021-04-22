@@ -1,10 +1,12 @@
-export const fetchAddBasket = (product) => {
+export const fetchAddBasket = (product, defaultPrice) => {
   return async dispatch => {
     dispatch({
       type: "FETCH_ADD_BASKET",
       payload: {
         product,
-        count:1
+        defaultPrice:defaultPrice,
+        count:1,
+     
       }
     });
   };
@@ -19,7 +21,7 @@ export function getBasketStorage() {
   };
 }
 
-export function fetchBasketItemActionCount(newPrice, productCount, productId) {
+export function fetchBasketItemActionCount(newPrice, productCount, productId, defaultPrice) {
   
   debugger;
   return async dispatch => {
@@ -28,7 +30,7 @@ export function fetchBasketItemActionCount(newPrice, productCount, productId) {
       payload: {
         newPrice:newPrice,
         productCount:productCount,
-        productId:productId
+        productId:productId,
       }
     });
   };

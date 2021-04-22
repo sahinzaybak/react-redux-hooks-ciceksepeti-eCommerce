@@ -201,6 +201,10 @@ label {
 }
 
 
+.cursor-pointer{
+  cursor: pointer;
+}
+
  .quantity {
     width: 172px;
     height: 43px;
@@ -223,4 +227,4 @@ label {
       cursor: pointer;
       user-select: none;
     }
-    }
+}

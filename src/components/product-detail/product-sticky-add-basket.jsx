@@ -9,6 +9,7 @@ let selectedProduct;
 const ProductStickyAddBasket = ({productId, productName, productImage, productPrice}) => {
   const dispatch = useDispatch()
   const [productCount, setProductCount] = useState()
+  const [defaultPrice] = useState(productPrice)
   basketList = useSelector(state => state.basket.basketList)
   selectedProduct = basketList.find(x => x.product.id == productId) // detayına girdiğim ürün sepetimde var mı yok mu?
 
@@ -29,7 +30,7 @@ const ProductStickyAddBasket = ({productId, productName, productImage, productPr
       </div>
       <div className="quantity d-flex">
         <p className="quantity-action" onClick={() => {
-          setProductCount(productCount-1); 
+          setProductCount(productCount -1); 
           actionCount(productCount -1, productId)}
           }>
         -</p>

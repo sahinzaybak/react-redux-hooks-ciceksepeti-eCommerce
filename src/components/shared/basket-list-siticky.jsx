@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import { CloseOutlined } from '@ant-design/icons';
+import { CloseOutlined, DeleteOutlined } from '@ant-design/icons';
 import '../../assets/scss/layout/basket-list-sticky.scss'
 
 let basketList;
@@ -17,8 +17,8 @@ const BasketListSticky = () => {
   }
 
   useEffect(() => { 
-    setTotalPrice(basketList.reduce((a,v) =>  a + v.product.price, 0).toFixed(3)) //Ürün toplamı
-  })
+    setTotalPrice(basketList.reduce((a,v) =>  a + v.product.price, 0).toFixed(2)) //Ürün toplamı
+  },[basketList])
 
   return (
     <>
@@ -42,9 +42,14 @@ const BasketListSticky = () => {
                 <div className="pr-2 d-flex flex-column w-100">
                   <p className="basket-list__name pt-2 pr-3">{basket.product.name}</p>
                   <div className="d-flex align-items-center justify-content-between mt-2">
-                    <p className="basket-list__price">{basket.product.price.toFixed(3)} ₺</p>
+                    <p className="basket-list__price">{basket.product.price.toFixed(2)} ₺</p>
                     <p className="basket-list__count ml-2">{basket.count} adet</p>
-                    {/* <p onClick={() => {localClear(); dispatch({ type: 'BASKET_ITEM_DELETE' , payload: index })}}>SİL</p> */}
+                    {<span className="d-flex cursor-pointer" onClick={() => {
+                      localClear(); 
+                      dispatch({ type: 'BASKET_ITEM_DELETE' , payload: index })
+                      }}>
+                      <DeleteOutlined />  
+                    </span>}
                   </div>
                 </div>
               </div>
