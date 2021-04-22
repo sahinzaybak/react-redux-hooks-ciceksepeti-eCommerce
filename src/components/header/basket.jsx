@@ -11,7 +11,7 @@ const Basket = () => {
   basketList = useSelector(state => state.basket.basketList)
 
   if(basketList.length != 0)
-    localStorage.setItem("basket", JSON.stringify(basketList)); // state basketList yenilendiğinde localStorage'de yenilenir.
+    localStorage.setItem("basket", JSON.stringify(basketList)) // state basketList yenilendiğinde localStorage'de yenilenir.
 
   useEffect(() => {
     if(JSON.parse(localStorage.getItem("basket")) != null) //localStorge basket bilgilerini al ve basketList state'ni doldur.

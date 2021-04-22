@@ -6,12 +6,13 @@ import {Link} from 'react-router-dom';
 import {fetchAddBasket, fetchBasketItemActionCount} from '../../store/actions/basket'
 
 let basketList;
-const ProductCard = ({product,productIndex}) => {
+const ProductCard = ({product}) => {
   basketList = useSelector(state => state.basket.basketList)
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [showCount, setShowCount] = useState(false)
   const [addBasketText, setAddBasketText] = useState("Sepete Ekle")
+  const [defaultPrice] = useState(product.price)
   const [productCount, setProductCount] = useState(1)
 
   async function addBasket(){
@@ -19,8 +20,9 @@ const ProductCard = ({product,productIndex}) => {
     localStorage.setItem("basket", JSON.stringify(basketList)); 
   }
 
-  function actionCount (productCount, productId){
-    dispatch(fetchBasketItemActionCount(productCount, productId));
+  function actionCount (productCount, productId){ //Ürün adedi arttır / azalt
+    var newPrice = defaultPrice * productCount
+    dispatch(fetchBasketItemActionCount(newPrice, productCount, productId));
   }
 
   return (
@@ -34,7 +36,7 @@ const ProductCard = ({product,productIndex}) => {
         <h2 className="product-list__name mt-2" alt={product.name}>{product.name}</h2>
         </>
         <>
-          <p className="product-list__price mb-1">{product.price}₺</p>
+          <p className="product-list__price mb-1">{defaultPrice}₺</p>
           {!showCount ?
             <div className="button product-list__add-basket d-flex-center" onClick={() => {
               setAddBasketText(''); 

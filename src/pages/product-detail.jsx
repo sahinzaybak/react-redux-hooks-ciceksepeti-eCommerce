@@ -8,7 +8,6 @@ import ProductDetail from '../components/product-detail/product-info'
 import ProductComments from '../components/product-detail/product-comments'
 import ProductStickyAddBasket from '../components/product-detail/product-sticky-add-basket'
 
-
 //Actions
 import {fetchProductDetail} from '../store/actions/products'
 
@@ -24,6 +23,7 @@ class productDetail extends PureComponent {
           {this.props.productDetail.length != 0 &&
             <>
               <ProductStickyAddBasket 
+                productId={this.props.productDetail[0].id} 
                 productName={this.props.productDetail[0].slug} 
                 productImage={this.props.productDetail[0].image} 
                 productPrice={this.props.productDetail[0].price}/>

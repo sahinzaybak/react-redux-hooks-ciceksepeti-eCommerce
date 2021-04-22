@@ -42,7 +42,10 @@ export default (state = initialState, action) => {
     case "FETCH_BASKET_ACTION_COUNT_ITEM":
       const defaultBasketList = [...state.basketList]
       defaultBasketList.forEach(element => {
-        if(element.product.id == action.payload.productId) element.count = action.payload.productCount
+        if(element.product.id == action.payload.productId){
+          element.count = action.payload.productCount
+          element.product.price = action.payload.newPrice
+        } 
       });
       return{
         ...state,

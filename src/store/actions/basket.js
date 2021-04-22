@@ -19,12 +19,14 @@ export function getBasketStorage() {
   };
 }
 
-export function fetchBasketItemActionCount(productCount, productId) {
+export function fetchBasketItemActionCount(newPrice, productCount, productId) {
+  
   debugger;
   return async dispatch => {
     dispatch({
       type: "FETCH_BASKET_ACTION_COUNT_ITEM",
       payload: {
+        newPrice:newPrice,
         productCount:productCount,
         productId:productId
       }
