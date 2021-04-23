@@ -1,6 +1,8 @@
 const initialState = {
   productList:[],
-  productDetail:[]
+  productDetail:[],
+  filteredProductList: [],
+  searchedProductList:[]
 }
 
 export default (state = initialState, action) => {
@@ -8,13 +10,30 @@ export default (state = initialState, action) => {
     case "FETCH_PRODUCT_LIST":
       return{
         ...state,
-        productList: action.payload
+        productList: action.payload,
+        filteredProductList: action.payload
       }
     case "FETCH_PRODUCT_DETAIL":
       return{
         ...state,
         productDetail: action.payload
       }
+    case "FETCH_PRODUCT_FILTER":
+      const filteredProductList = state.filteredProductList.filter(product => product.category == action.payload)
+      return{
+        ...state,
+        productList: filteredProductList
+      }
+    case "FETCH_SEARCHED_PRODUCT":
+      return{
+        ...state,
+        searchedProductList: action.payload
+      }
+      case "SEARCH_LIST_CLEAR":
+        return{
+          ...state,
+          searchedProductList: action.payload
+        }
     default:
       return state;
   }

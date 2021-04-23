@@ -1,5 +1,6 @@
 @import './colors.scss';
 .product-detail {
+  position: relative;
   padding: 40px 0 120px;
   &__name {
     font-size: 33px;

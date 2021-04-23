@@ -1,6 +1,8 @@
 const initialState = {
   basketList:[],
   activeBasketList:false,
+  activeShadow:false,
+  searchListOpen:false
 }
 
 export default (state = initialState, action) => {
@@ -25,12 +27,6 @@ export default (state = initialState, action) => {
         basketList: action.payload
     }
 
-    case "BASKET_LIST_OPEN":
-      return{
-        ...state,
-        activeBasketList: action.payload
-    }
-
     case "BASKET_ITEM_DELETE":
       const newBasketList = [...state.basketList]
       newBasketList.splice(action.payload, 1);
@@ -47,10 +43,27 @@ export default (state = initialState, action) => {
           _basketList.product.price = action.payload.newPrice
         } 
       });
-      
       return{
         ...state,
         basketList: [...state.basketList] 
+      }
+
+      case "ACTIVE_SHADOW":
+        return{
+          ...state,
+          activeShadow: action.payload
+      }
+  
+      case "BASKET_LIST_OPEN":
+        return{
+          ...state,
+          activeBasketList: action.payload
+      }
+
+      case "SEARCH_LIST_OPEN":
+        return{
+          ...state,
+          searchListOpen: action.payload
       }
 
     default:

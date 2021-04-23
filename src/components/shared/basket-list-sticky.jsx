@@ -4,12 +4,13 @@ import { CloseOutlined, DeleteOutlined } from '@ant-design/icons';
 import '../../assets/scss/layout/basket-list-sticky.scss'
 
 let basketList;
-let isActivebasketList;
+let isActiveBasketList;
+
 const BasketListSticky = () => {
   const dispatch = useDispatch() 
   const [totalPrice, setTotalPrice] = useState(0)
   basketList = useSelector(state => state.basket.basketList)
-  isActivebasketList = useSelector(state => state.basket.activeBasketList)
+  isActiveBasketList = useSelector(state => state.basket.activeBasketList)
 
   function localClear(){
     if(basketList.length == 1) localStorage.clear();
@@ -20,15 +21,12 @@ const BasketListSticky = () => {
   },[basketList])
 
   return (
-    <>
-    <div className={`shadow-bg ${isActivebasketList ? "active" : ""}`} 
-      onClick={() => dispatch({ type: 'BASKET_LIST_OPEN' , payload: false })}>
-    </div>
-
-    <div className={`basket-list-sticky ${isActivebasketList ? "active" : ""}`}>
+    <div className={`basket-list-sticky ${isActiveBasketList ? "active" : ""}`}>
       <div className="d-flex align-items-center justify-content-between">
         <h3>Sepetim ({basketList.length})</h3>
-        <CloseOutlined onClick={() => dispatch({ type: 'BASKET_LIST_OPEN', payload: false })} />
+        <CloseOutlined onClick={() => { 
+          dispatch({ type: 'BASKET_LIST_OPEN', payload: false })
+           dispatch({ type: 'ACTIVE_SHADOW', payload: false })}} />
       </div>
       <div className="d-flex flex-column justify-content-between h-100">
         <div className="basket-list mt-3">
@@ -67,7 +65,6 @@ const BasketListSticky = () => {
         </div>
     </div>
   </div>
-  </>
   ) 
 }
 

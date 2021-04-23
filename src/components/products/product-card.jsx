@@ -37,8 +37,6 @@ const ProductCard = ({product}) => {
     if(isProductinBasketBool) setProductCount(getBasketData.count)
   });
 
- 
-
   return (
     <div to={`/detail/${product.slug}`} className="product-list__cell">
       <div className={`product-list__item d-flex flex-column justify-content-between ${showCount ? "selected" : ""}`}>
@@ -46,7 +44,7 @@ const ProductCard = ({product}) => {
         <Link to={`/detail/${product.slug}`}>
           <img src={product.image} alt={product.name} /> 
         </Link>
-        <p className="category mt-2">Moda, Aksesuar</p>
+        <p className="category mt-2">{product.category}</p>
         <h2 className="product-list__name mt-2" alt={product.name}>{product.name}</h2>
         </>
         <>

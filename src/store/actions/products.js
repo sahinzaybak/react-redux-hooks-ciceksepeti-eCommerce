@@ -15,7 +15,6 @@ export const fetchProductList = () => {
 export const fetchProductDetail = (slug) => {
   return async dispatch => {
     await axios.get(`${BASE_URL}/product-detail?slug=${slug}`).then(value => {
-      debugger;
       dispatch({
         type: "FETCH_PRODUCT_DETAIL",
         payload: value.data
@@ -23,6 +22,18 @@ export const fetchProductDetail = (slug) => {
     });
   };
 }
+
+export const fetchSearchedProduct = (searchedProduct) => {
+  return async dispatch => {
+    await axios.get(`${BASE_URL}/products?name=${searchedProduct}`).then(value => {
+      dispatch({
+        type: "FETCH_SEARCHED_PRODUCT",
+        payload: value.data
+      });
+    });
+  };
+}
+
 
 export const fetchProductAddComment = (comment, star, product, productComment ) => {
   return function () {

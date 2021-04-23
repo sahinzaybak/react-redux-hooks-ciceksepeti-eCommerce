@@ -12,11 +12,11 @@ import { useState } from 'react';
  
 let isSignInPermission;
 const SignIn = (props) => {
-  const [loading, setLoading] = useState(false);
-  isSignInPermission = useSelector(state => state.auth.isSıgnIn)
   const dispatch = useDispatch()
   const history = useHistory();
-
+  const [loading, setLoading] = useState(false);
+  isSignInPermission = useSelector(state => state.auth.isSıgnIn)
+ 
   const validateMessages = {
     required: 'E-mail alanı boş bırakılmaz!',
     types: { email: 'Lütfen email formatında bir mail adresi giriniz.' },

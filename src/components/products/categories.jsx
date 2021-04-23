@@ -1,8 +1,10 @@
 import React from 'react';
 import '../../assets/scss/categories.scss'
+import {useDispatch} from 'react-redux'
 import categories from '../../assets/images/category.svg'
 
 const Categories = ({categoryList}) => {
+  const dispatch = useDispatch()
   return (
     <div class="categories mt-2">
       <div className="custom-container">
@@ -11,9 +13,15 @@ const Categories = ({categoryList}) => {
           <h3 className="categories-title ml-2">Kategoriler</h3>
         </div>
         <div className="categories-wrp d-flex flex-wrap">
-          <a className="categories-item"><p className="categories-item--active">Tüm Kategoriler</p></a>
+          <a className="categories-item">
+            <p className="categories-item--active">Tüm Kategoriler</p>
+          </a>
           {categoryList.map((category) =>
-            <a className="categories-item"><p>{category.categoryName}</p></a>
+            <a className="categories-item" onClick={() => {
+              dispatch({ type: 'FETCH_PRODUCT_FILTER', payload: category.categoryName})
+            }}>
+            <p>{category.categoryName}</p>
+            </a>
           )}
         </div>
       </div>

@@ -1,15 +1,59 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useSelector, useDispatch} from 'react-redux'
 import search from '../../assets/images/search.svg'
+import { debounce } from 'lodash'
 
+//Actions
+import {fetchSearchedProduct} from '../../store/actions/products'
+
+let searchedProductList,isActiveShadow;
 const Search = ({text}) => {
+  const dispatch = useDispatch()
+  searchedProductList = useSelector(state => state.products.searchedProductList)
+  isActiveShadow = useSelector(state => state.basket.activeShadow)
+
+  const searchText = debounce(async(search) => {
+    const searchedProduct = search.target.value;
+    if(searchedProduct.length >= 3){
+      await dispatch(fetchSearchedProduct(searchedProduct))
+      dispatch({ type: 'ACTIVE_SHADOW' , payload: true })
+      dispatch({ type: 'SEARCH_LIST_OPEN' , payload: true })
+    }
+    //length 3'ten küçükse ise search array temizle
+    if(searchedProduct < 3){
+      dispatch({ type: 'SEARCH_LIST_CLEAR', payload: [] })
+      dispatch({ type: 'ACTIVE_SHADOW' , payload: false })
+      dispatch({ type: 'SEARCH_LIST_OPEN' , payload: false })
+    }
+  },600)
+
   return (
-    <div className="header-search d-flex align-items-center">
-      <img src={search} alt=""/>
-      <input type="text" placeholder="Ürün Ara.."/>
-      <a href="#" className="button header-search__button">Ara</a>
+    <div className="header-search d-flex flex-column">
+      <div className="d-flex align-items-center w-100">
+        <img src={search} alt=""/>
+        <input type="text" placeholder="Ürün Ara.." onChange={e => searchText(e)}/>
+        <a href="#" className="button header-search__button">Ara</a>
+      </div>
+
+    {searchedProductList.length != 0 && 
+      <div className={`header-search__result ${isActiveShadow  ? "active" : ""}`}>
+        {searchedProductList.map((searchList) => 
+          <div className="search-item d-flex align-items-center">
+            <div className="d-flex align-items-center justify-content-between w-100">
+              <div className="d-flex align-items-center">
+                <img className="mr-2" src={searchList.image} alt=""/>
+                <h3>{searchList.name}</h3>
+              </div>
+            <div>
+              <p>{searchList.category}</p>
+            </div>
+          </div>
+        </div>
+        )}
+      </div>
+      }
     </div>
   );
 };
-
 
 export default Search;
