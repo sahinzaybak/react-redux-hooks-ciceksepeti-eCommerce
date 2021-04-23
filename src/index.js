@@ -16,8 +16,6 @@ import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import 'animate.css/animate.min.css';
 
-
-
 const store = createStore(
 	rootReducer,
 	applyMiddleware(createPromise(), thunk, createLogger())

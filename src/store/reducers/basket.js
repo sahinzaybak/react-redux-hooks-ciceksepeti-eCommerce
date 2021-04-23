@@ -47,6 +47,7 @@ export default (state = initialState, action) => {
           _basketList.product.price = action.payload.newPrice
         } 
       });
+      
       return{
         ...state,
         basketList: [...state.basketList] 

@@ -65,6 +65,11 @@
     &-name{
       font-weight: $fw-600;
       font-size: 18px;
+      width: 300px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
     &-info {
       img{
@@ -76,9 +81,24 @@
       }
     }
     &-price {
-      font-size: 27px;
+      width: 120px;
+      font-size: 36px;
       color: #262626;
       font-weight: $fw-600;
+    }
+    .quantity{
+      margin-left: -17%;
+    }
+    &.disabled{
+      .quantity{
+        opacity: 0.6;
+        pointer-events: none;
+        filter: blur(2px);
+        margin-left: 0%;
+      }
+      .product-detail__sticky-price{
+        font-size: 30px;
+      }
     }
   }
 }

@@ -1,13 +1,10 @@
 import React from 'react';
-import {useSelector} from 'react-redux'
 import productListIco from '../../assets/images/product-list-ico.svg'
 
 //Component
 import ProductCard from './product-card'
 
-
 const ProductList = ({productList, categoryList}) => {
-
   return (
     <div className="product-list mt-2">
       <div className="custom-container">
@@ -17,7 +14,6 @@ const ProductList = ({productList, categoryList}) => {
         </div>
         <div className="product-list__wrp d-flex flex-wrap">
           {productList.map((product) => 
-  
             <ProductCard product={product} />
           )}
         </div>

@@ -12,11 +12,11 @@ const ProductCard = ({product}) => {
   const [loading, setLoading] = useState(false)
   const [showCount, setShowCount] = useState(false)
   const [addBasketText, setAddBasketText] = useState("Sepete Ekle")
-  const [defaultPrice] = useState(product.price)
+  const [defaultPrice, setDefaultPrice] = useState()
   const [productCount, setProductCount] = useState(1)
 
   async function addBasket(){
-    await dispatch(fetchAddBasket(product,defaultPrice));
+    await dispatch(fetchAddBasket(product, defaultPrice));
     localStorage.setItem("basket", JSON.stringify(basketList)); 
   }
 
@@ -26,12 +26,18 @@ const ProductCard = ({product}) => {
   }
 
   useEffect(() => {
+    setDefaultPrice(product.price)
+  }, []);
+
+  useEffect(() => {
     const isProductinBasketBool = basketList.some(item => item.product.id == product.id) //basket'te varsa ürünü seçili yap.
     setShowCount(isProductinBasketBool)
 
     const getBasketData = basketList.find(item => item.product.id == product.id) // seçili ürünün adet bilgisini getir.
     if(isProductinBasketBool) setProductCount(getBasketData.count)
   });
+
+ 
 
   return (
     <div to={`/detail/${product.slug}`} className="product-list__cell">

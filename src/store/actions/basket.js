@@ -6,7 +6,6 @@ export const fetchAddBasket = (product, defaultPrice) => {
         product,
         defaultPrice:defaultPrice,
         count:1,
-     
       }
     });
   };
@@ -22,8 +21,6 @@ export function getBasketStorage() {
 }
 
 export function fetchBasketItemActionCount(newPrice, productCount, productId, defaultPrice) {
-  
-  debugger;
   return async dispatch => {
     dispatch({
       type: "FETCH_BASKET_ACTION_COUNT_ITEM",

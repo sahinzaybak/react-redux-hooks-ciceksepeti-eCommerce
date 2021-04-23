@@ -72,7 +72,7 @@ const SignIn = (props) => {
           <Input prefix={<UserOutlined className="login-form__icon" />} placeholder="E-mail adresiniz"/>
         </Form.Item>
         <Form.Item name="password" rules={[{ required: true, message: 'Lütfen şifrenizi giriniz.' }]}>
-          <Input  prefix={<LockOutlined className="login-form__icon" />}  type="password" placeholder="Şifreniz" />
+          <Input prefix={<LockOutlined className="login-form__icon" />}  type="password" placeholder="Şifreniz" />
         </Form.Item>
         <Form.Item className="d-flex justify-content-end">
         <div className="d-flex-center">

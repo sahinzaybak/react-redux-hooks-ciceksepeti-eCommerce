@@ -5,7 +5,6 @@ import {useDispatch} from 'react-redux'
 import {fetchBasketItemActionCount} from '../../store/actions/basket'
 
 const BasketList  = ({basketList}) => {
-  debugger;
   const dispatch = useDispatch()
   const [productCount, setProductCount] = useState()
 

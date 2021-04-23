@@ -26,12 +26,15 @@ class productDetail extends PureComponent {
                 productId={this.props.productDetail[0].id} 
                 productName={this.props.productDetail[0].slug} 
                 productImage={this.props.productDetail[0].image} 
-                productPrice={this.props.productDetail[0].price}/>
+                productPrice={this.props.productDetail[0].price}
+                product={this.props.productDetail[0]}/>
               <div className="row"> 
                 <ProductImage productImage={this.props.productDetail[0].image} />
                 <ProductDetail productDetail={this.props.productDetail} />
               </div>
-              <ProductComments productComments={this.props.productDetail[0].comments}/>
+              <ProductComments 
+               product={this.props.productDetail[0]} 
+               productComments={this.props.productDetail[0].comments}/>
             </>
         }
         </div>
