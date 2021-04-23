@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom';
 
@@ -25,6 +25,14 @@ const ProductCard = ({product}) => {
     dispatch(fetchBasketItemActionCount(newPrice, productCount, productId));
   }
 
+  useEffect(() => {
+    const isProductinBasketBool = basketList.some(item => item.product.id == product.id) //basket'te varsa ürünü seçili yap.
+    setShowCount(isProductinBasketBool)
+
+    const getBasketData = basketList.find(item => item.product.id == product.id) // seçili ürünün adet bilgisini getir.
+    if(isProductinBasketBool) setProductCount(getBasketData.count)
+  });
+
   return (
     <div to={`/detail/${product.slug}`} className="product-list__cell">
       <div className={`product-list__item d-flex flex-column justify-content-between ${showCount ? "selected" : ""}`}>
@@ -44,12 +52,13 @@ const ProductCard = ({product}) => {
               setTimeout(() => {
                 addBasket();
                 setShowCount(true)
+                dispatch({ type: 'BASKET_LIST_OPEN' , payload: true})
               },2000)
             }}>
               <div className={`spinner-border position-absolute ${!loading ? "d-none" : ""}`} role="status"></div>
               <p>{addBasketText}</p>
             </div>
-            :
+            :  
             <div className="quantity d-flex w-100">
               <p className="quantity-action" onClick={() => {
                 setProductCount(productCount -1); 
@@ -69,6 +78,5 @@ const ProductCard = ({product}) => {
     </div> 
   );
 };
-
 
 export default ProductCard;

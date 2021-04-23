@@ -21,9 +21,9 @@ const BasketList  = ({basketList}) => {
   return (
     <>
     <div className="product-detail__sticky position-relative w-100 mb-4">
-      <div className="product-detail__sticky-info d-flex">
+      <div className="product-detail__sticky-info d-flex align-items-center">
         <img src={basketList.product.image} width={50} alt=""/>
-        <p className="product-detail__sticky-name ml-3 pt-3">{basketList.product.name}</p>
+        <p className="product-detail__sticky-name ml-3">{basketList.product.name}</p>
       </div>
       <div className="quantity d-flex">
         <p className="quantity-action" onClick={() => {

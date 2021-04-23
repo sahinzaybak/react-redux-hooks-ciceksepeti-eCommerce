@@ -8,7 +8,6 @@ let isActivebasketList;
 const BasketListSticky = () => {
   const dispatch = useDispatch() 
   const [totalPrice, setTotalPrice] = useState(0)
-
   basketList = useSelector(state => state.basket.basketList)
   isActivebasketList = useSelector(state => state.basket.activeBasketList)
 
@@ -28,7 +27,7 @@ const BasketListSticky = () => {
 
     <div className={`basket-list-sticky ${isActivebasketList ? "active" : ""}`}>
       <div className="d-flex align-items-center justify-content-between">
-        <h3>Sepetim</h3>
+        <h3>Sepetim ({basketList.length})</h3>
         <CloseOutlined onClick={() => dispatch({ type: 'BASKET_LIST_OPEN', payload: false })} />
       </div>
       <div className="d-flex flex-column justify-content-between h-100">
@@ -46,7 +45,7 @@ const BasketListSticky = () => {
                     <p className="basket-list__count ml-2">{basket.count} adet</p>
                     {<span className="d-flex cursor-pointer" onClick={() => {
                       localClear(); 
-                      dispatch({ type: 'BASKET_ITEM_DELETE' , payload: index })
+                      dispatch({ type: 'BASKET_ITEM_DELETE', payload: index })
                       }}>
                       <DeleteOutlined />  
                     </span>}
