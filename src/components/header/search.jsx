@@ -7,30 +7,35 @@ import { debounce } from 'lodash'
 import {fetchSearchedProduct} from '../../store/actions/products'
 
 let searchedProductList,isActiveShadow;
-const Search = ({text}) => {
+const Search = () => {
   const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false)
   searchedProductList = useSelector(state => state.products.searchedProductList)
   isActiveShadow = useSelector(state => state.basket.activeShadow)
 
-  const searchText = debounce(async(search) => {
+  const searchText = debounce(async (search) => {
     const searchedProduct = search.target.value;
     if(searchedProduct.length >= 3){
+      setLoading(true)
       await dispatch(fetchSearchedProduct(searchedProduct))
+      setLoading(false)
       dispatch({ type: 'ACTIVE_SHADOW' , payload: true })
-      dispatch({ type: 'SEARCH_LIST_OPEN' , payload: true })
+      dispatch({ type: 'SEARCH_LIST_RESULT_OPEN' , payload: true })
     }
+    
     //length 3'ten küçükse ise search array temizle
     if(searchedProduct < 3){
       dispatch({ type: 'SEARCH_LIST_CLEAR', payload: [] })
       dispatch({ type: 'ACTIVE_SHADOW' , payload: false })
-      dispatch({ type: 'SEARCH_LIST_OPEN' , payload: false })
+      dispatch({ type: 'SEARCH_LIST_RESULT_OPEN' , payload: false })
     }
   },600)
 
   return (
     <div className="header-search d-flex flex-column">
       <div className="d-flex align-items-center w-100">
-        <img src={search} alt=""/>
+        <img src={search} alt="" className={`${loading ? "invisible" : ""}`}/>
+        <div className={`spinner-border position-absolute ${!loading ? "invisible" : ""}`}></div>
         <input type="text" placeholder="Ürün Ara.." onChange={e => searchText(e)}/>
         <a href="#" className="button header-search__button">Ara</a>
       </div>

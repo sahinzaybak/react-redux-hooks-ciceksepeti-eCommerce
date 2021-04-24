@@ -4,16 +4,14 @@ import {useSelector, useDispatch} from 'react-redux'
 //Actions
 import {fetchAddBasket, fetchBasketItemActionCount} from '../../store/actions/basket'
 
-
-let basketList;
-let selectedProduct;
+let basketList,selectedProduct;
 const ProductStickyAddBasket = ({productId, productName, productImage, productPrice, product}) => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [addBasketText, setAddBasketText] = useState("Sepete Ekle")
   const [productCount, setProductCount] = useState()
   basketList = useSelector(state => state.basket.basketList)
-  selectedProduct = basketList.find(x => x.product.id == productId) // detayına girdiğim ürün sepetimde var mı yok mu?
+  selectedProduct = basketList.find(x => x.product.id == productId) // detayına girdiğim ürün, sepetimde var mı yok mu?
 
   async function addBasket(){
     await dispatch(fetchAddBasket(product, productPrice));
@@ -28,7 +26,12 @@ const ProductStickyAddBasket = ({productId, productName, productImage, productPr
   useEffect(() => { 
     selectedProduct == null ? setProductCount(1) : setProductCount(selectedProduct.count) 
   })
+
+  useEffect(() => { 
+    selectedProduct == null ? setLoading(false) : setAddBasketText('Sepete Ekle'); 
+  },[selectedProduct])
   
+
   return (
     <div className={`product-detail__sticky ${selectedProduct == null ? "disabled" : ""}`}>
       <div className="product-detail__sticky-info d-flex">

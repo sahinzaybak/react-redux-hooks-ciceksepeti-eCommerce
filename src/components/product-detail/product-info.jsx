@@ -1,8 +1,15 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Rater from 'react-rater'
+import {useDispatch} from 'react-redux'
 import 'react-rater/lib/react-rater.css'
 
 const ProductInfo = ({productDetail}) => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    return () => {
+      dispatch({ type: 'PRODUCT_DETAIL_CLEAR' , payload: []})
+    }
+  },[])
   return (
     <div className="col-md-6">
       <div className="product-detail__wrp pl-4">

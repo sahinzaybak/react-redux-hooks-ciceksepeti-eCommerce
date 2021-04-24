@@ -38,11 +38,16 @@
     display: block;
     width: 190px;
     color: white;
-    padding: 16px 16px;
+    height: 55px;
     text-align: center;
     border-radius: 6px;
     font-weight: $fw-600;
     font-size: 17px;
+    cursor: pointer;
+    transition: all .3s;
+    &:hover{
+      background-color: #5fca57;
+    }
   }
 
   &__sticky {

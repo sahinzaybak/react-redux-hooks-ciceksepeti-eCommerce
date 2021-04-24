@@ -20,13 +20,6 @@ export default (state = initialState, action) => {
           basketList: [...JSON.parse(localStorage.getItem("basket")), action.payload]
         }
       }
-
-    case "GET_BASKET_STORAGE":
-      return{
-        ...state,
-        basketList: action.payload
-    }
-
     case "BASKET_ITEM_DELETE":
       const newBasketList = [...state.basketList]
       newBasketList.splice(action.payload, 1);
@@ -34,7 +27,6 @@ export default (state = initialState, action) => {
         ...state,
         basketList: newBasketList 
     }
-
     case "FETCH_BASKET_ACTION_COUNT_ITEM":
       const defaultBasketList = [...state.basketList]
       defaultBasketList.forEach(_basketList => {
@@ -47,20 +39,22 @@ export default (state = initialState, action) => {
         ...state,
         basketList: [...state.basketList] 
       }
-
+      case "GET_BASKET_STORAGE":
+        return{
+          ...state,
+          basketList: action.payload
+      }
       case "ACTIVE_SHADOW":
         return{
           ...state,
           activeShadow: action.payload
       }
-  
       case "BASKET_LIST_OPEN":
         return{
           ...state,
           activeBasketList: action.payload
       }
-
-      case "SEARCH_LIST_OPEN":
+      case "SEARCH_LIST_RESULT_OPEN":
         return{
           ...state,
           searchListOpen: action.payload

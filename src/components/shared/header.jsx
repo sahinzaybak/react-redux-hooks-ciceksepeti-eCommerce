@@ -35,7 +35,7 @@ const Header = () => {
         onClick={() => {
           dispatch({ type: 'BASKET_LIST_OPEN', payload: false })
           dispatch({ type: 'SEARCH_LIST_CLEAR', payload: [] })
-          dispatch({ type: 'SEARCH_LIST_OPEN', payload: false })
+          dispatch({ type: 'SEARCH_LIST_RESULT_OPEN', payload: false })
           dispatch({ type: 'ACTIVE_SHADOW', payload: false })
         }}>
       </div>

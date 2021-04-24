@@ -15,7 +15,7 @@ const ProductCard = ({product}) => {
   const [defaultPrice, setDefaultPrice] = useState()
   const [productCount, setProductCount] = useState(1)
 
-  async function addBasket(){
+  async function addBasket(){ //sepete ekle
     await dispatch(fetchAddBasket(product, defaultPrice));
     localStorage.setItem("basket", JSON.stringify(basketList)); 
   }
@@ -33,21 +33,28 @@ const ProductCard = ({product}) => {
     const isProductinBasketBool = basketList.some(item => item.product.id == product.id) //basket'te varsa ürünü seçili yap.
     setShowCount(isProductinBasketBool)
 
-    const getBasketData = basketList.find(item => item.product.id == product.id) // seçili ürünün adet bilgisini getir.
+    const getBasketData = basketList.find(item => item.product.id == product.id) //seçili ürünün adet bilgisini getir.
     if(isProductinBasketBool) setProductCount(getBasketData.count)
   });
 
+  useEffect(() => {
+    setLoading(false) 
+    setAddBasketText('Sepete Ekle'); 
+  },[basketList]);
+
   return (
-    <div to={`/detail/${product.slug}`} className="product-list__cell">
-      <div className={`product-list__item d-flex flex-column justify-content-between ${showCount ? "selected" : ""}`}>
-        <>
-        <Link to={`/detail/${product.slug}`}>
-          <img src={product.image} alt={product.name} /> 
-        </Link>
-        <p className="category mt-2">{product.category}</p>
-        <h2 className="product-list__name mt-2" alt={product.name}>{product.name}</h2>
-        </>
-        <>
+    <>
+    {product != null && 
+      <div to={`/detail/${product.slug}`} className="product-list__cell">
+        <div className={`product-list__item d-flex flex-column justify-content-between ${showCount ? "selected" : ""}`}>
+          <>
+            <Link to={`/detail/${product.slug}`}>
+              <img src={product.image} alt={product.name} /> 
+            </Link>
+            <p className="category mt-2">{product.category}</p>
+            <h2 className="product-list__name mt-2" alt={product.name}>{product.name}</h2>
+            </>
+          <>
           <p className="product-list__price mb-1">{defaultPrice}₺</p>
           {!showCount ?
             <div className="button product-list__add-basket d-flex-center" onClick={() => {
@@ -56,7 +63,7 @@ const ProductCard = ({product}) => {
               setTimeout(() => {
                 addBasket();
                 setShowCount(true)
-                dispatch({ type: 'BASKET_LIST_OPEN' , payload: true})
+                dispatch({ type: 'BASKET_LIST_OPEN', payload: true})
               },2000)
             }}>
               <div className={`spinner-border position-absolute ${!loading ? "d-none" : ""}`} role="status"></div>
@@ -76,10 +83,12 @@ const ProductCard = ({product}) => {
                 }}>
               +</p>
             </div>
-          }
-        </>
-      </div>
-    </div> 
+            }
+          </>
+        </div>
+      </div> 
+    }
+    </>
   );
 };
 

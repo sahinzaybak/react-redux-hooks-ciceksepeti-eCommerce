@@ -56,7 +56,6 @@ const ProductComments = ({product, productComments}) => {
     }, 2500);
   };
   
-
   return (
     <div className="comments mt-4 pt-3">
       <div className="d-block text-center mb-4">

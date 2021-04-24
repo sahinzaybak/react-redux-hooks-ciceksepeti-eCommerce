@@ -14,6 +14,7 @@ import './assets/global.scss'
 function App() {
   return (
     <div className="App">
+    
       <Route path="/" render={(props) => (props.location.pathname !== "/") && <Header />}></Route>
       <Route exact path='/' component={loginPage}></Route>
       <Route exact path='/products' component={productsPage}></Route>

@@ -29,11 +29,21 @@ export default (state = initialState, action) => {
         ...state,
         searchedProductList: action.payload
       }
-      case "SEARCH_LIST_CLEAR":
-        return{
-          ...state,
-          searchedProductList: action.payload
-        }
+    case "SEARCH_LIST_CLEAR":
+      return{
+        ...state,
+        searchedProductList: action.payload
+      }
+    case "PRODUCT_LIST_CLEAR":
+      return{
+        ...state,
+        productList: action.payload
+      }
+    case "PRODUCT_DETAIL_CLEAR":
+      return{
+        ...state,
+        productDetail: action.payload
+      }
     default:
       return state;
   }
