@@ -1,10 +1,10 @@
 import {Route} from 'react-router-dom';
-import {useSelector} from 'react-redux'
 import { useHistory } from "react-router";
 
 //Pages
 import loginPage from './pages/login.jsx'
 import Header from './components/shared/header.jsx'
+import Footer from './components/shared/footer.jsx'
 import productsPage from './pages/products.jsx'
 import productDetailPage from './pages/product-detail.jsx'
 import basketPage from './pages/basket.jsx'
@@ -23,13 +23,14 @@ function App() {
     <div className="App">
       {loginUserInfo == null && history.push("/login")}
 
-      <Route exact path='/login' component={loginPage}></Route>
-      <Route path="/" render={(props) => (props.location.pathname !== "/login") && <Header />}></Route>
+      <Route exact path='/' component={loginPage}></Route>
+      <Route path="/" render={(props) => (props.location.pathname !== "/") && <Header /> }></Route>
       <Route exact path='/products' component={productsPage}></Route>
       <Route exact path='/basket' component={basketPage}></Route>
       <Route exact path='/payment' component={paymentPage}></Route>
       <Route exact path='/siparislerim' component={previousOrder}></Route>
       <Route exact path='/detail/:slug' component={productDetailPage}></Route>
+      <Route path="/" render={(props) => (props.location.pathname !== "/") && <Footer /> }></Route>
       
     </div>
   );
