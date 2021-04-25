@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom';
+import LazyLoad from 'react-lazyload';
 
 //Actions
 import {fetchAddBasket, fetchBasketItemActionCount} from '../../store/actions/basket'
 
-let basketList;
+let basketList
 const ProductCard = ({product}) => {
   basketList = useSelector(state => state.basket.basketList)
   const dispatch = useDispatch()
@@ -14,6 +15,7 @@ const ProductCard = ({product}) => {
   const [addBasketText, setAddBasketText] = useState("Sepete Ekle")
   const [defaultPrice, setDefaultPrice] = useState()
   const [productCount, setProductCount] = useState(1)
+
 
   async function addBasket(){ //sepete ekle
     await dispatch(fetchAddBasket(product, defaultPrice));
@@ -49,7 +51,9 @@ const ProductCard = ({product}) => {
         <div className={`product-list__item d-flex flex-column justify-content-between ${showCount ? "selected" : ""}`}>
           <>
             <Link to={`/detail/${product.slug}`}>
-              <img src={product.image} alt={product.name} /> 
+              <LazyLoad height={200}>
+                <img src={product.image} alt={product.name} />            
+              </LazyLoad>
             </Link>
             <p className="category mt-2">{product.category}</p>
             <h2 className="product-list__name mt-2" alt={product.name}>{product.name}</h2>

@@ -27,13 +27,15 @@ class productDetail extends PureComponent {
           <>
             <ProductStickyAddBasket 
               productId={this.props.productDetail[0].id} 
-              productName={this.props.productDetail[0].slug} 
+              productName={this.props.productDetail[0].name} 
               productImage={this.props.productDetail[0].image} 
               productPrice={this.props.productDetail[0].price}
               product={this.props.productDetail[0]}/>
             <div className="row"> 
               <ProductImage productImage={this.props.productDetail[0].image} />
-              <ProductDetail productDetail={this.props.productDetail} />
+              <ProductDetail 
+                productDetail={this.props.productDetail} 
+                productComments={this.props.productDetail[0].comments} />
             </div>
             <ProductComments 
               product={this.props.productDetail[0]} 

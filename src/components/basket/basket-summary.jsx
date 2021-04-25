@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useSelector} from 'react-redux'
+import {Link} from 'react-router-dom';
 
 let basketList;
 const BasketSummary  = () => {
@@ -10,6 +11,7 @@ const BasketSummary  = () => {
   useEffect(() => { 
     setTotalPrice(basketList.reduce((a,v) =>  a + v.product.price, 0).toFixed(2)) //Ürün toplamı
     setCargoTotalPrice(basketList.reduce((a,v) =>  a = (a + v.product.price) + parseFloat('0.090'), 0 ).toFixed(2))
+    localStorage.setItem('totalPrice', cargoTotalPrice)
   })
   return (
     <>
@@ -34,7 +36,7 @@ const BasketSummary  = () => {
         </div>
       </div>
     </div>
-    <a className="button-ant green flex-center w-100 text-center mt-3">Satın Al</a>
+    <Link to="/payment" className="button-ant green flex-center w-100 text-center mt-3">Satın Al</Link>
     </>
   );
 };

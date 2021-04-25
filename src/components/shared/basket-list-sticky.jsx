@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
+import {Link} from 'react-router-dom';
 import { CloseOutlined, DeleteOutlined } from '@ant-design/icons';
 import '../../assets/scss/layout/basket-list-sticky.scss'
 
@@ -13,7 +14,7 @@ const BasketListSticky = () => {
   isActiveBasketList = useSelector(state => state.basket.activeBasketList)
 
   function localClear(){
-    if(basketList.length == 1) localStorage.clear();
+    if(basketList.length == 1) localStorage.removeItem('basket');
   }
 
   useEffect(() => { 
@@ -26,7 +27,8 @@ const BasketListSticky = () => {
         <h3>Sepetim ({basketList.length})</h3>
         <CloseOutlined onClick={() => { 
           dispatch({ type: 'BASKET_LIST_OPEN', payload: false })
-           dispatch({ type: 'ACTIVE_SHADOW', payload: false })}} />
+          dispatch({ type: 'ACTIVE_SHADOW', payload: false })
+        }} />
       </div>
       <div className="d-flex flex-column justify-content-between h-100">
         <div className="basket-list mt-3">
@@ -59,7 +61,8 @@ const BasketListSticky = () => {
             <p>{totalPrice }₺</p>
           </div>
           <div className="basket-list__action d-flex flex-column">
-            <a className="basket-list__view-button mb-3">Sepeti Görüntüle</a>
+
+            <Link to={"/basket"} className="basket-list__view-button mb-3">Sepeti Görüntüle</Link>
             <a className="basket-list__payment-button">Ödeme Yap</a>
           </div>
         </div>

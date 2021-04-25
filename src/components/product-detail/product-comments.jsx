@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useDispatch} from 'react-redux'
 import { Modal,Input } from 'antd';
 import 'react-rater/lib/react-rater.css'
@@ -12,6 +12,7 @@ import '../../assets/scss/product-detail-comments.scss'
 import {fetchProductAddComment, fetchProductDetail } from '../../store/actions/products'
 
 const { TextArea } = Input;
+let userName; 
 const ProductComments = ({product, productComments}) => {
   const dispatch = useDispatch()
   const [form] = Form.useForm();
@@ -41,11 +42,11 @@ const ProductComments = ({product, productComments}) => {
         insert: "top",
         width:300,
         showIcon:true,
-        container: "top-right",
+        container: "bottom-right",
         animationIn: ["animate__animated", "animate__fadeIn"],
         animationOut: ["animate__animated", "animate__fadeOut"],
         dismiss: {
-          duration: 2500,
+          duration: 3000,
           onScreen: false
         },
       })
@@ -57,10 +58,12 @@ const ProductComments = ({product, productComments}) => {
   };
   
   return (
-    <div className="comments mt-4 pt-3">
+    <div id="comments" className="comments mt-4 pt-3">
       <div className="d-block text-center mb-4">
         <h2>Yorumlar ({productComments.length})</h2>
-        <p onClick={showModal}>Sende Yorum Yap</p>
+          <p className="comments__add-comment" onClick={showModal}>
+            {productComments.length != 0 ?  "Ürün Hakkında Yorum Yap" : "İlk yorum yapan sen ol!" }
+          </p>
       </div>
       
       <Modal title="Merhaba Şahin, ürüne yorum yapabilir ve puan verebilirsin." visible={isModalVisible} onCancel={closeModal} footer={null}>
@@ -80,12 +83,13 @@ const ProductComments = ({product, productComments}) => {
             <div className="d-flex-center">
               <div className={`spinner-border position-absolute color-white ${!loading ? "d-none" : ""}`} role="status"></div>
                 <Button className="button-ant green" type="primary" htmlType="submit">
-                  {!loading && "Giriş Yap"}
+                  {!loading && "Yorum Yap"}
                 </Button>
             </div>
         </Form>
       </Modal>
     
+    {productComments.length != 0 &&
       <div className="comments-wrp">
         {productComments.map((comment) => 
           <div className="comments-item">
@@ -101,8 +105,9 @@ const ProductComments = ({product, productComments}) => {
             </div>
           </div>
         )}
-      </div>
     </div>
+    }
+  </div>
   );
 };
 

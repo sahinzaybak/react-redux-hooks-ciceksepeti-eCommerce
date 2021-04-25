@@ -16,7 +16,7 @@
   }
   &-search {
     position: relative;
-    width: 60%;
+    width: 70%;
     height: 50px;
     margin-left: 5%;
     background: #F7F7F7;
@@ -85,6 +85,7 @@
     padding: 1px 24px;
     width: 135px;
     cursor: pointer;
+    height: 50px;
     &__text{
       color: white;
       font-size: 16px;
@@ -99,6 +100,9 @@
       top: -10px;
       color: white;
       font-weight: $fw-600;
+    }
+    &.disabled{
+      pointer-events: none;
     }
   }
   &-progress{
@@ -132,6 +136,22 @@
 
     }
   }
+  &-actions{
+    &__item{
+      width: 85px;
+      text-align: center;
+      font-size: 15px;
+      color: #424242;
+      cursor: pointer;
+      margin-right: 8%;
+    }
+    &__user{
+      color: #f79a58;
+      font-size: 26px;
+      margin-bottom: 2px;
+    }
+  }
+ 
 }
 
 .shadow-bg{

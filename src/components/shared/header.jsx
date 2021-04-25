@@ -2,12 +2,15 @@ import React from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import '../../assets/scss/layout/header.scss'
 import logo from '../../assets/images/logo.svg'
+import {Link} from 'react-router-dom';
 
 //Components
 import Search from '../header/search'
 import Basket from '../header/basket'
 import ProgressBar from '../header/progress'
+import Actions from '../header/actions'
 import BasketSticky from './basket-list-sticky'
+
 
 let isActiveShadow,isActiveBasketList,searchListOpen;
 const Header = () => {
@@ -19,13 +22,14 @@ const Header = () => {
       <>
       <div className={`header d-flex align-items-center ${searchListOpen ? "active" : ""}`}>
         <div className="custom-container">
-          <div className="d-flex">
+          <div className="d-flex align-items-center">
             <div className="d-flex align-items-center w-100">
-              <div className="header-logo">
+              <Link to="/products" className="header-logo">
                 <img src={logo} alt=""/>
-              </div>
+              </Link>
               <Search />
             </div>
+             <Actions />
             <Basket />
           </div>
          <ProgressBar />

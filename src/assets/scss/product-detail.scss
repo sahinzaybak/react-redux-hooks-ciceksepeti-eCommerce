@@ -1,7 +1,7 @@
 @import './colors.scss';
 .product-detail {
   position: relative;
-  padding: 40px 0 120px;
+  padding: 40px 0 170px;
   &__name {
     font-size: 33px;
     font-weight: 600;
@@ -57,11 +57,11 @@
     border: 1px solid #dedddd;
     background-color: #fdfdfd;
     border-radius: 6px;
-    box-shadow: #096dd914 1px 1px 60px 6px;
+    box-shadow: #0e0e0e2b 1px 1px 60px 6px;
     right: 0;
     left: 0;
     margin: 0 auto;
-    bottom: 10px;
+    bottom: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -69,13 +69,13 @@
     z-index: 9;
     
     &-name{
+      display: flex;
+      align-items: center;
       font-weight: $fw-600;
       font-size: 18px;
       width: 300px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      line-height: 1.2;
+
     }
     &-info {
       img{

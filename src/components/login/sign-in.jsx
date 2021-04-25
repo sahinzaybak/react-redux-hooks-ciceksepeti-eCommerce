@@ -10,12 +10,12 @@ import "antd/dist/antd.css";
 import {fetchSignIn} from '../../store/actions/auth'
 import { useState } from 'react';
  
-let isSignInPermission;
+let loginUserInfo;
 const SignIn = (props) => {
   const dispatch = useDispatch()
   const history = useHistory();
   const [loading, setLoading] = useState(false);
-  isSignInPermission = useSelector(state => state.auth.isSıgnIn)
+  loginUserInfo = useSelector(state => state.auth.loginUserInfo)
  
   const validateMessages = {
     required: 'E-mail alanı boş bırakılmaz!',
@@ -24,7 +24,7 @@ const SignIn = (props) => {
 
   const onSignIn = async (values) => { //Kullanıcı Girişi
     await dispatch(fetchSignIn(values.email, values.password))
-    if(isSignInPermission) {
+    if(loginUserInfo != null) {
       setLoading(true)
       store.addNotification({
         message: "Giriş başarılı, yönlendiriliyorsunuz...",
@@ -42,7 +42,11 @@ const SignIn = (props) => {
       })
       setTimeout(() => {
           history.push("/products")
-          localStorage.setItem('login', values.email)
+          localStorage.setItem('login', JSON.stringify({
+            id:loginUserInfo.id,
+            name:loginUserInfo.name,
+            email:loginUserInfo.email
+          }))
       }, 2800);
     }
     else{

@@ -2,8 +2,9 @@ import React,{useEffect} from "react";
 import Rater from 'react-rater'
 import {useDispatch} from 'react-redux'
 import 'react-rater/lib/react-rater.css'
+import {Link} from 'react-scroll'
 
-const ProductInfo = ({productDetail}) => {
+const ProductInfo = ({productDetail,productComments}) => {
   const dispatch = useDispatch()
   useEffect(() => {
     return () => {
@@ -13,11 +14,15 @@ const ProductInfo = ({productDetail}) => {
   return (
     <div className="col-md-6">
       <div className="product-detail__wrp pl-4">
-        <p className="category mb-1">Hediye</p>
-        <h1 className="product-detail__name">{productDetail[0].slug}</h1>
+        <p className="category mb-1">Ürün Sahibi: {productDetail[0].company}</p>
+        <h1 className="product-detail__name">{productDetail[0].name}</h1>
         <div className="d-block">
           <Rater total={5} rating={2} interactive={false} />
-          <p>(13) Yorum</p>
+          <div className="d-flex align-items-center">
+            <p><Link to="comments" spy={true} smooth={true}>({productComments.length}) Yorum</Link></p>
+            <p className="ml-2"><Link to="comments" spy={true} smooth={true}><strong>Yorum Yap</strong></Link></p>
+          </div>
+       
         </div>
         <div className="d-block mt-3">
           <span className="product-detail__titles">Ürün Açıklaması</span>

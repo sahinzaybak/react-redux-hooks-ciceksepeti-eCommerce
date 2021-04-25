@@ -39,6 +39,13 @@ export default (state = initialState, action) => {
         ...state,
         basketList: [...state.basketList] 
       }
+
+    case "FETCH_BASKET_CLEAR":
+      return{
+        ...state,
+        basketList: action.payload
+    }
+
       case "GET_BASKET_STORAGE":
         return{
           ...state,

@@ -1,13 +1,17 @@
 const initialState = {
-  isSıgnIn:''
+  loginUserInfo:[],
+  isAuth:''
 }
 
 export default (state = initialState, action) => {
+  let _isAuth;
   switch (action.type) {
     case "FETCH_SIGN_IN_PERMISSION":
+      if(action.payload != null) _isAuth = true
       return{
         ...state,
-        isSıgnIn: action.payload
+        loginUserInfo: action.payload,
+        isAuth:_isAuth
       }
     default:
       return state;

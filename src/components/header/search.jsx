@@ -32,7 +32,7 @@ const Search = () => {
   },600)
 
   return (
-    <div className="header-search d-flex flex-column">
+    <div className="header-search d-flex-center flex-column">
       <div className="d-flex align-items-center w-100">
         <img src={search} alt="" className={`${loading ? "invisible" : ""}`}/>
         <div className={`spinner-border position-absolute ${!loading ? "invisible" : ""}`}></div>
