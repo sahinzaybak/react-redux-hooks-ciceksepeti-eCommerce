@@ -18,6 +18,11 @@
     &__item{
       border-bottom: 1px solid #f1f1f1;
       padding: 8px 0px;
+      &.disabled{
+        pointer-events: none;
+        opacity: 0.6;
+        filter: blur(3px);
+      }
     }
     &__label{
       font-size: 18px;

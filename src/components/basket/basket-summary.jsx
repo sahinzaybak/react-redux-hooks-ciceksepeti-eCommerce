@@ -10,8 +10,8 @@ const BasketSummary  = () => {
 
   useEffect(() => { 
     setTotalPrice(basketList.reduce((a,v) =>  a + v.product.price, 0).toFixed(2)) //Ürün toplamı
-    setCargoTotalPrice(basketList.reduce((a,v) =>  a = (a + v.product.price) + parseFloat('0.090'), 0 ).toFixed(2))
-    localStorage.setItem('totalPrice', cargoTotalPrice)
+    setCargoTotalPrice(basketList.reduce((a,v) =>  a = (a + v.product.price) + 4.95, 0 ).toFixed(2)) //+ 9,90
+    totalPrice >= 500 ? localStorage.setItem('totalPrice', totalPrice) : localStorage.setItem('totalPrice', cargoTotalPrice)
   })
   return (
     <>
@@ -26,13 +26,16 @@ const BasketSummary  = () => {
           <p className="basket-summary__label">Ürün Adedi:</p>
           <p className="basket-summary__value">{basketList.length}</p>
         </div>
-        <div className="basket-summary__item d-flex justify-content-between">
+        <div className={`basket-summary__item d-flex justify-content-between ${totalPrice >= 500 ? "disabled" : ""}`}>
           <p className="basket-summary__label">Kargo Ücreti:</p>
           <p className="basket-summary__value">9,90 ₺</p>
         </div>
         <div className="basket-summary__item d-flex justify-content-between">
           <p className="basket-summary__label">Toplam Fiyat:</p>
+          {totalPrice >= 500 ?  <p className="basket-summary__value">{totalPrice} ₺</p>
+          :
           <p className="basket-summary__value">{cargoTotalPrice} ₺</p>
+          }
         </div>
       </div>
     </div>
