@@ -7,6 +7,12 @@ import {Link} from 'react-scroll'
 const ProductInfo = ({productDetail,productComments}) => {
   const dispatch = useDispatch()
   useEffect(() => {
+    dispatch({ type: 'SEARCH_LIST_CLEAR', payload: [] })
+    dispatch({ type: 'ACTIVE_SHADOW' , payload: false })
+    dispatch({ type: 'SEARCH_LIST_RESULT_OPEN' , payload: false })
+  }, []);
+
+  useEffect(() => {
     return () => {
       dispatch({ type: 'PRODUCT_DETAIL_CLEAR' , payload: []})
     }

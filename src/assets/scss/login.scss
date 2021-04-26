@@ -1,5 +1,6 @@
 @import './colors.scss';
 @import './button.scss';
+@import '../variables.scss';
 
 .login {
   position: relative;
@@ -58,11 +59,15 @@
 
   &-form {
     width: 900px;
+    max-width: 86%;
     height: 500px;
     background-color:white;
     border-radius: 12px;
     overflow: hidden;
     z-index: 9;
+    @media (max-width: $tabletScreen) {
+      height: 80vh;
+    }
     
     &__main{
       padding: 40px 55px 50px 26px;

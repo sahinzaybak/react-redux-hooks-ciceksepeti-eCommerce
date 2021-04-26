@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import {useSelector} from 'react-redux'
-import {Link} from 'react-router-dom';
+import {Link,useLocation} from 'react-router-dom';
 
 let basketList;
 const BasketSummary  = () => {
+  const location = useLocation();
   const [totalPrice, setTotalPrice] = useState(0)
   const [cargoTotalPrice, setCargoTotalPrice] = useState(0)
   basketList = useSelector(state => state.basket.basketList)
@@ -39,7 +40,10 @@ const BasketSummary  = () => {
         </div>
       </div>
     </div>
-    <Link to="/payment" className="button-ant green flex-center w-100 text-center mt-3">Satın Al</Link>
+    {location.pathname != "/odeme" && 
+        <Link to="/odeme" className="button green flex-center w-100 text-center mt-3">Satın Al</Link>
+    }
+
     </>
   );
 };

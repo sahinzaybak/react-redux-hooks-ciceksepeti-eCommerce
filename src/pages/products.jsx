@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
-import '../assets/scss/products.scss'
 import { connect } from "react-redux"; 
+
+import '../assets/scss/products.scss'
 
 //Components
 import BlueTitle from '../components/products/blue-title'
@@ -11,6 +12,7 @@ import ProductList from '../components/products/product-list'
 //Actions
 import {fetchCategoryList} from '../store/actions/categories'
 import {fetchProductList} from '../store/actions/products'
+import {getBasketStorage} from '../store/actions/basket'
 
 class products extends PureComponent {
   componentDidMount(){
@@ -24,7 +26,7 @@ class products extends PureComponent {
         <BlueTitle text="Çiçek Sepeti" />
         <BreadCrumb />
         <Categories categoryList={this.props.categoryList} />
-        <ProductList productList={this.props.productList} categoryList={this.props.categoryList} />
+        <ProductList productList={this.props.productList} />
       </div>
     );
   }
@@ -39,7 +41,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   fetchCategoryList,
-  fetchProductList
+  fetchProductList,
+  getBasketStorage
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(products);

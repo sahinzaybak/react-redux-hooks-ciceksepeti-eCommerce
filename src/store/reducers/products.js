@@ -19,7 +19,10 @@ export default (state = initialState, action) => {
         productDetail: action.payload
       }
     case "FETCH_PRODUCT_FILTER":
-      const filteredProductList = state.filteredProductList.filter(product => product.category == action.payload)
+      let filteredProductList
+      action.payload == "AllCategories" ?  filteredProductList = state.filteredProductList 
+      :      
+      filteredProductList = state.filteredProductList.filter(product => product.category == action.payload)
       return{
         ...state,
         productList: filteredProductList

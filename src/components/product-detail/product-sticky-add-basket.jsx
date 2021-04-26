@@ -34,7 +34,7 @@ const ProductStickyAddBasket = ({productId, productName, productImage, productPr
 
   return (
     <div className={`product-detail__sticky ${selectedProduct == null ? "disabled" : ""}`}>
-      <div className="product-detail__sticky-info d-flex">
+      <div className="product-detail__sticky-info">
         <img src={productImage} width={50} alt=""/>
         <p className="product-detail__sticky-name ml-3">{productName}</p>
       </div>
@@ -55,7 +55,7 @@ const ProductStickyAddBasket = ({productId, productName, productImage, productPr
         {selectedProduct == null ? 
           <p className="product-detail__sticky-price mr-4">{productPrice.toFixed(2)}₺</p>
           :
-          <p className="product-detail__sticky-price mr-4">{selectedProduct.product.price.toFixed(2)}₺</p>
+          <p className="product-detail__sticky-price mr-4 pl-4 pd-md-0">{selectedProduct.product.price.toFixed(2)}₺</p>
         }
      
         {selectedProduct == null &&

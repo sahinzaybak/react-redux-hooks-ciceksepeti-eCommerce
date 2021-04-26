@@ -1,13 +1,14 @@
 import React from 'react';
 import {ShoppingOutlined, FrownOutlined,ExclamationCircleOutlined } from '@ant-design/icons';
 import { useHistory } from "react-router";
+import {useSelector, useDispatch} from 'react-redux'
 import { Modal } from 'antd';
 import {Link} from 'react-router-dom';
 
 const { confirm } = Modal;
 const Actions = () => {
+  const dispatch = useDispatch() 
   const history = useHistory();
-  
   function signOut(){
     confirm({
       title: 'Çıkış yapmak istediğinizden emin misiniz?',
@@ -21,15 +22,13 @@ const Actions = () => {
         return new Promise((resolve, reject) => {
           setTimeout(Math.random() > 1000 ? resolve  : reject, 1000);
           setTimeout(() => {
-            localStorage.removeItem('login');
-            history.push("/login")
+            localStorage.clear();
+            dispatch({ type: 'FETCH_BASKET_CLEAR' , payload: []})
+            history.push("/giris")
           }, 1000);
         }).catch(() =>false);
       },
     });
-
-    
-
   }
   return (
     <div className="header-actions d-flex">

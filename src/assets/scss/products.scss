@@ -1,4 +1,6 @@
 @import './colors.scss';
+@import '../variables.scss';
+
 .product-list{
   &-title{
     font-size: 20px;
@@ -11,6 +13,12 @@
   &__cell{
     width: calc(100% / 5);
     padding: 0 10px 30px 10px;
+    @media (max-width: $largeScreen) {
+      width: calc(100% / 3);
+    }
+    @media (max-width: $tabletScreen) {
+      width: calc(100% / 2);
+    }
   }
   &__item{
     height: 386px;
@@ -19,6 +27,9 @@
     border: 1px solid #E2E7E9;
     border-radius: 10px;
     transition: all .3s;
+    @media (max-width: $mobile) {
+      height: 325px;
+    }
     &:hover{
       box-shadow: #7171712e 1px 8px 30px 2px;
       &.selected{
@@ -26,10 +37,13 @@
       }
     }
     img{
-      width: 100%;;
+      width: 100%;
       height: 200px;
       border-radius: 10px;
       object-fit: cover;
+      @media (max-width: $mobile) {
+        height: 140px;
+      }
     }
     &.selected{
       background-color: #7dca3794;

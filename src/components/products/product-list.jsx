@@ -1,15 +1,25 @@
-import React from 'react';
-import productListIco from '../../assets/images/product-list-ico.svg'
+import React,{useEffect, useState} from 'react';
 import ProductLoader from '../content-loaders/products'
-import '../../assets/scss/campaign.scss'
-import delivery from '../../assets/images/delivery.png'
-import present from '../../assets/images/present.png'
-import stationery from '../../assets/images/stationery.png'
+
+//Imagess
+import productListIco from '../../assets/images/product-list-ico.svg'
 
 //Component
 import ProductCard from './product-card'
+import Campaigns from '../shared/campaigns'
 
-const ProductList = ({productList}) => {
+const ProductList = ({productList, categoryList}) => {
+  const [selectedCategory, setSelectedCategory] = useState()
+  useEffect(() => {
+    if(productList.length != 0){
+      setSelectedCategory(productList[0].category)
+    }
+  }, [productList]);
+
+  useEffect(() => {
+    setSelectedCategory("Tüm Kategoriler")
+}, []);
+
   return (
     <div className="product-list mt-2">
       <div className="custom-container">
@@ -18,62 +28,17 @@ const ProductList = ({productList}) => {
         <>
           <div className="d-flex mb-3">
             <img src={productListIco} alt=""/>
-            <h3 className="product-list-title ml-2">Tüm Kategoriler</h3>
+            <h3 className="product-list-title ml-2">{selectedCategory}</h3>
           </div>
           <div className="product-list__wrp d-flex flex-wrap">
             {productList.map((product) => 
-              <ProductCard product={product} />
+              <ProductCard product={product} key={product.id} />
             )}
           </div>
         </>
       }
       </div>
-      <div className="campaign">
-        <div className="custom-container">
-          
-          <div className="campain-wrp d-flex flex-wrap">
-
-          
-          <div className="campaign-cell">
-            <div className="campaign-cell__item d-flex align-items-center">
-              <div className="campaign-cell__img">
-                <img src={delivery} alt=""/>
-              </div>
-              <div className="campaign-cell__detail">
-                <p className="campaign-cell__text">75 TL Üzerine Teslimat Ücreti Bizden</p>
-                <a href="" className="campaign-cell__button">Detaylı Bilgi</a>
-              </div>
-            </div>
-          </div>
-          <div className="campaign-cell">
-            <div className="campaign-cell__item d-flex align-items-center">
-              <div className="campaign-cell__img">
-                <img src={present} alt=""/>
-              </div>
-              <div className="campaign-cell__detail">
-                <p className="campaign-cell__text"> Hediye Kategorisi için Sepette %15 İndirim</p>
-                <a href="" className="campaign-cell__button">Detaylı Bilgi</a>
-              </div>
-            </div>
-          </div>
-          <div className="campaign-cell">
-            <div className="campaign-cell__item d-flex align-items-center">
-              <div className="campaign-cell__img">
-                <img src={stationery} alt=""/>
-              </div>
-              <div className="campaign-cell__detail">
-                <p className="campaign-cell__text">Kırtasiye Kategorisi için Sepette %15 İndirim</p>
-                <a href="" className="campaign-cell__button">Detaylı Bilgi</a>
-              </div>
-            </div>
-          </div>
-         </div>
-        
-        </div>
-             
-              
-             
-          </div>
+      <Campaigns />
     </div>
   );
 };

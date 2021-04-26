@@ -12,7 +12,7 @@ import BasketSummary from '../components/basket/basket-summary'
 class basket extends PureComponent {
   render() {
     return (
-      <div className="basket mt-3"> 
+      <div className="basket mt-0 mt-md-5"> 
         <div className="custom-container">
           {this.props.basketList.length > 0 ?
           <>
@@ -22,8 +22,8 @@ class basket extends PureComponent {
             </div>
             <div className="row mt-4">
               <div className="col-md-8">
-              {this.props.basketList.map((basket) => 
-                <BasketList basketList={basket} />
+              {this.props.basketList.map((basket,index) => 
+                <BasketList basketList={basket} key={index} />
               )}
               </div>
               <div className="col-md-4">
@@ -43,9 +43,7 @@ class basket extends PureComponent {
             </Link>
            </div>
           </div> 
-
         }
-        
         </div>
       </div>
     );

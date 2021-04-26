@@ -1,9 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Form, Input, Button } from 'antd';
+import {useSelector, useDispatch} from 'react-redux';
+import { useHistory } from "react-router";
+import { store } from 'react-notifications-component';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import "antd/dist/antd.css";
 
-const signUp= (props) => {
+//Actions
+import {fetchSignUp} from '../../store/actions/auth'
+import {fetchSignIn} from '../../store/actions/auth'
+import {fetchSameUserControl} from '../../store/actions/auth'
+
+let loginUserInfo;
+const SignUp= () => {
+  const dispatch = useDispatch()
+  const history = useHistory();
+  const [loading, setLoading] = useState(false);
+  loginUserInfo = useSelector(state => state.auth.loginUserInfo)
+
   const validateMessages = {
     required: 'E-mail alanı boş bırakılmaz!',
     types: {
@@ -11,8 +25,78 @@ const signUp= (props) => {
     },
   };
 
-  const onFinish = (values) => {
-    console.log('Success:', values);
+  const onFinish = async (values) => {
+    let isSameUser;
+    setLoading(true)
+    //aynı mail adresi ile başka üye var mı kontrol
+    await dispatch(fetchSameUserControl(values.email)).then(value =>{ isSameUser = value}) 
+    if(!isSameUser){
+      await dispatch(fetchSignUp(values.username, values.email, values.password)).then(value => {
+        if(value == "Created"){
+          store.addNotification({
+            message: "Üye işlemi başarılı, yönlendiriliyorsunuz...",
+            type: "success",
+            insert: "top",
+            width:300,
+            showIcon:true,
+            container: "top-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 2500,
+              onScreen: false
+            },
+          })
+          dispatch(fetchSignIn(values.email, values.password)) //üye olduktan sonra sisteme otomatik giriş.
+          if(loginUserInfo != null){
+            localStorage.setItem('login', JSON.stringify({
+              id:loginUserInfo.id,
+              name:loginUserInfo.name,
+              email:loginUserInfo.email
+            }))
+          }
+          setTimeout(() => {
+            history.push("/urunler")
+          }, 2800);
+        }
+        else{
+          store.addNotification({
+            message: "Bir sorun oluştu, lütfen tekrar deneyin.",
+            type: "danger",
+            insert: "top",
+            width:300,
+            showIcon:true,
+            container: "top-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 2500,
+              onScreen: false
+            },
+          })
+        }
+      })
+    }
+    else{
+      store.addNotification({
+        message: "Bu mail adresi ile bir üyemiz mevcut. Lütfen başka bir mail adresi ile üye olmayı deneyin.",
+        type: "danger",
+        insert: "top",
+        width:300,
+        showIcon:true,
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 3000,
+          onScreen: false
+        },
+      })
+      setTimeout(() => {
+        setLoading(false)
+      }, 3000);
+    }
+   
   };
 
   return (
@@ -30,11 +114,18 @@ const signUp= (props) => {
           <Input  prefix={<LockOutlined className="login-form__icon" />}  type="password" placeholder="Şifreniz" />
         </Form.Item>
         <Form.Item className="d-flex justify-content-end">
-          <Button className="button-ant green" type="primary" htmlType="submit">Üye Ol</Button>
+        <div className="d-flex-center">
+          <div className={`spinner-border position-absolute color-white ${!loading ? "d-none" : ""}`} role="status"></div>
+            <Button className="button-ant green" type="primary" htmlType="submit">
+              {!loading && "Üye Ol"}
+            </Button>
+          </div>
         </Form.Item>
+
+       
       </Form>
    </div>
   );
 };
 
-export default signUp
+export default SignUp

@@ -16,18 +16,18 @@ const ProductCard = ({product}) => {
   const [defaultPrice, setDefaultPrice] = useState()
   const [productCount, setProductCount] = useState(1)
 
-
   async function addBasket(){ //sepete ekle
     await dispatch(fetchAddBasket(product, defaultPrice));
     localStorage.setItem("basket", JSON.stringify(basketList)); 
   }
 
   function actionCount (productCount, productId){ //Ürün adedi arttır / azalt
-    var newPrice = defaultPrice * productCount
+    let newPrice = defaultPrice * productCount
     dispatch(fetchBasketItemActionCount(newPrice, productCount, productId));
   }
 
   useEffect(() => {
+    setDefaultPrice('')
     setDefaultPrice(product.price)
   }, []);
 
@@ -47,11 +47,11 @@ const ProductCard = ({product}) => {
   return (
     <>
     {product != null && 
-      <div to={`/detail/${product.slug}`} className="product-list__cell">
+      <div className="product-list__cell">
         <div className={`product-list__item d-flex flex-column justify-content-between ${showCount ? "selected" : ""}`}>
           <>
-            <Link to={`/detail/${product.slug}`}>
-              <LazyLoad height={200}>
+            <Link to={`/urunler/${product.slug}`}>
+              <LazyLoad height={50}>
                 <img src={product.image} alt={product.name} />            
               </LazyLoad>
             </Link>

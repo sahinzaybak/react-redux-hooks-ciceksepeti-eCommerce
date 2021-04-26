@@ -1,38 +1,45 @@
+@import '../variables.scss';
+@import './colors.scss';
+
 .campaign {
   margin: 0 -10px 0 -10px;
-
   padding: 35px 0 0 0;
   border-top: 2px solid #EDF1F2;
-
-
+  @media (max-width: $mobile) {
+    margin: 0;
+  }
   &-cell {
     width: calc(100% / 3);
     padding: 0 10px 30px 10px;
-
+    @media (max-width: $largeScreen) {
+      width: calc(100% / 2);
+      padding: 0 0 30px 0;
+    }
+    @media (max-width: $mediumScreen) {
+      width: calc(100% / 1);
+    }
+  
     &:nth-child(1) {
       .campaign-cell__item {
-        background-color: #FFEAE8;
+        background-color: $campaign-purple;
       }
     }
 
     &:nth-child(2) {
       .campaign-cell__item {
-        background-color: #E8F1FF;
+        background-color: $campaign-blue;
       }
     }
 
     &:nth-child(3) {
       .campaign-cell__item {
-        background-color: #E2F7E1;
+        background-color: $campaign-green;
       }
     }
 
     &__item {
       padding: 18px;
       border-radius: 10px;
-
-
-
     }
 
     &__text {
@@ -41,31 +48,28 @@
       line-height: 1.1;
       font-weight: 300;
       margin-bottom: 12px;
-      
     }
 
     &__img {
       flex-shrink: 0;
-
       img {
         width: 140px;
-
       }
     }
+    
     &__detail{
       margin-left: 25px
     }
+
     &__button{
       width: 104px;
-    height: 30px;
-    background: #FFFFFF;
-    color: #E64E41;
-    border-radius: 15px;
-    font-size: 13px;
-    padding: 6px 16px;
-    font-weight: 600;
-
+      height: 30px;
+      background: #FFFFFF;
+      color: #E64E41;
+      border-radius: 15px;
+      font-size: 13px;
+      padding: 6px 16px;
+      font-weight: 600;
     }
   }
-
 }

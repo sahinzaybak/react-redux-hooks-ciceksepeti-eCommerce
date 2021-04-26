@@ -1,15 +1,27 @@
 @import './colors.scss';
+@import '../variables.scss';
+
 .categories{
   &-title{
     color:$blue-main;
     font-size: 24px;
   }
   &-wrp{
+    display: flex;
+    flex-wrap: wrap;
     margin: 0 -10px 0 -10px;
+    @media screen and (max-width: $mediumScreen) {
+      flex-wrap: nowrap;
+      overflow: scroll;
+    }
   }
   &-item{
     width: calc(100% / 7);
     padding: 0 10px 20px 10px;
+    @media screen and (max-width: $mediumScreen) {
+      width: 150px;
+      display: inline-table;
+    }
     p{
       width: 100%;
       height: 45px;
@@ -33,12 +45,5 @@
       color:white !important;
       border:none !important;
     }
-  }
-  &-loader{
-    svg{
-      
-    }
-   
-    
   }
 }

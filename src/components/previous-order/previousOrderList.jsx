@@ -8,7 +8,7 @@ const previousOrderList = ({ prevOrder }) => {
       <div className="basket-item">
         {prevOrder.orderList.map((orderList) => (  
           <>
-          <div className="basket-item__wrp">
+          <div className="basket-item__wrp" key={orderList.id}>
             <div className="previous-item d-flex align-items-center flex-column flex-md-row">
                 <div className="basket-item__img mr-4">
                 <img src={orderList.product.image} alt=""/>

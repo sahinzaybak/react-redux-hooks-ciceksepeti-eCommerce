@@ -1,4 +1,5 @@
 @import '../colors.scss';
+@import '../../variables.scss';
 
 .basket-list-sticky{
   position: fixed;
@@ -12,8 +13,13 @@
   box-shadow: #096dd924 1px 1px 60px 6px;
   transform: translateX(30em);
   opacity: 0;
+  pointer-events: none;
   transition: all .4s ease;
+  @media (max-width: $tabletScreen) {
+   width: 100%;
+  }
   &.active{
+    pointer-events: all;
     transform: none;
     opacity: 1;
   }
@@ -80,5 +86,22 @@
       background-color: #50b648;
       color:white;
     }
+  }
+}
+
+.shadow-bg{
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.8);
+  opacity: 0;
+  z-index: 99;
+  pointer-events: none;
+  transition: all .4s ease;
+  &.active{
+    opacity: 1;
+    pointer-events: all;
   }
 }

@@ -24,6 +24,7 @@ const BasketList  = ({basketList}) => {
         <img src={basketList.product.image} width={50} alt=""/>
         <p className="product-detail__sticky-name ml-3">{basketList.product.name}</p>
       </div>
+    <div className="d-flex flex-md-row flex-column align-items-center justify-content-between">
       <div className="quantity d-flex">
         <p className="quantity-action" onClick={() => {
           setProductCount(productCount -1); 
@@ -38,8 +39,10 @@ const BasketList  = ({basketList}) => {
        +</p>
       </div>
       <div className="d-flex align-items-center">
-        <p className="product-detail__sticky-price mr-4">{basketList.product.price.toFixed(2)} ₺</p>
+        <p className="product-detail__sticky-price mr-0 mr-md-4">{basketList.product.price.toFixed(2)} ₺</p>
       </div>
+    </div>
+     
     </div>
     </>
   );

@@ -21,7 +21,6 @@ let totalPrice;
 let today = new Date()
 let basketList
 const { confirm } = Modal;
-
 const Payment = () => {
   const history = useHistory();
   const dispatch = useDispatch() 
@@ -57,7 +56,7 @@ const Payment = () => {
                 localStorage.removeItem("totalPrice")
                 localStorage.setItem('previous-order', JSON.stringify(basketList))
                 dispatch({ type: 'FETCH_BASKET_CLEAR', payload: [] })
-                history.push("/products")
+                history.push("/urunler")
               },
             });
           }, 1000);
@@ -71,38 +70,31 @@ const Payment = () => {
         <Form name="nest-messages" validateMessages={validateMessages} onFinish={completePayment.bind(this)}>
         <div className="row">
           <div className="col-md-12 pr-5">
-          <div className="d-flex justify-content-between flex-column flex-md-row">
-            <Form.Item name="name" label="Ad-Soyad" rules={[{required: true}]}>
-              <Input placeholder="Ad-Soyad" />
-            </Form.Item>
-            <Form.Item name="number" label="Telefon No" rules={[{required: true,type: "number"}]}>
-              <InputNumber placeholder="Telefon No" />
-            </Form.Item>
-          </div>
-          <div className="d-flex justify-content-between flex-column flex-md-row">
-            <Form.Item name="email"label="E-posta Adresi" rules={[{required: true,type: "email"}]}>
-              <Input placeholder="E-posta Adresi"/>
-            </Form.Item>
-            <Form.Item name="country" label="Yaşadığınız İl" rules={[{required: true}]}>
-              <Select placeholder="İl Seçiniz" allowClear>
-                <Option value="istanbul">İstanbul</Option>
-                <Option value="ankara">Ankara</Option>
-                <Option value="izmir">İzmir</Option>
-                <Option value="antalya">Antalya</Option>
-                <Option value="muğla">Muğla</Option>
-              </Select>
-            </Form.Item>
-          </div>
-          <div className="d-flex justify-content-between flex-column flex-md-row">
+            <div className="d-flex justify-content-between flex-column flex-md-row">
+              <Form.Item name="number" label="Telefon No" rules={[{required: true,type: "number"}]}>
+                <InputNumber placeholder="Telefon No" />
+              </Form.Item>
+              <Form.Item name="email"label="E-posta Adresi" rules={[{required: true,type: "email"}]}>
+                <Input placeholder="E-posta Adresi"/>
+              </Form.Item>
+            </div>
+            <div className="d-flex justify-content-between flex-column flex-md-row">
             <Form.Item name="iban" label="IBAN Numaranız" rules={[{required: true,type: "number"}]}>
-              <InputNumber placeholder="IBAN Numaranız" />
-            </Form.Item>
-            <Form.Item name="iban" label="IBAN Numaranız" rules={[{required: true,type: "number"}]}>
-              <InputNumber placeholder="IBAN Numaranız" />
-            </Form.Item>
+                <InputNumber placeholder="IBAN Numaranız" />
+              </Form.Item>
+
+              <Form.Item name="country" label="Yaşadığınız İl" rules={[{required: true}]}>
+                <Select placeholder="İl Seçiniz" allowClear>
+                  <Option value="istanbul">İstanbul</Option>
+                  <Option value="ankara">Ankara</Option>
+                  <Option value="izmir">İzmir</Option>
+                  <Option value="antalya">Antalya</Option>
+                  <Option value="muğla">Muğla</Option>
+                </Select>
+              </Form.Item>
+            </div>
           </div>
-        </div>
-        <button className="button green mt-3 w-100">Ödemeyi Tamamla</button>
+        <button className="button green mt-3 w-25 ml-auto mr-5">Ödemeyi Tamamla</button>
         </div>
         </Form>  
     </div>

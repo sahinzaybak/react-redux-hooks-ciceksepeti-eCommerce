@@ -17,21 +17,11 @@ const AppArea = () => {
             <img className="footer-main__logo" src={logo} alt=""/>
             <div className="footer-main__social">
               <div className="d-flex">
-                <a href="">
-                 <img src={facebook} alt=""/>
-                </a>
-                <a href="">
-                 <img src={twitter} alt=""/>
-                </a>
-                <a href="">
-                 <img src={instagram} alt=""/>
-                </a>
-                <a href="">
-                 <img src={youtube} alt=""/>
-                </a>
-                <a href="">
-                 <img src={unkown} alt=""/>
-                </a>
+                <a href=""><img src={facebook} alt=""/></a>
+                <a href=""><img src={twitter} alt=""/></a>
+                <a href=""><img src={instagram} alt=""/></a>
+                <a href=""><img src={youtube} alt=""/></a>
+                <a href=""><img src={unkown} alt=""/></a>
               </div>
             </div>
             <p className="footer-main__kvkk">
@@ -41,7 +31,7 @@ const AppArea = () => {
         </div>
         <div className="col-md-7">
           <div className="row">
-            <div className="col-md-3">
+            <div className="col-6 col-md-3">
               <div className="footer-link">
                 <h4 className="footer-link__title">Faydalı Bilgiler</h4>
                 <a href="#">Çiçek Bakımı</a>
@@ -50,10 +40,9 @@ const AppArea = () => {
                 <a href="#">Özel Günler</a>
                 <a href="#">Mevsimlere Göre Çiçekler</a>
                 <a href="#">Site Haritası</a>
-                
               </div>
             </div>
-            <div className="col-md-3">
+            <div className="col-6 col-md-3">
               <div className="footer-link">
                 <h4 className="footer-link__title">Kurumsal</h4>
                 <a href="#">Hakkımızda</a>
@@ -66,14 +55,14 @@ const AppArea = () => {
                 <a href="#">Vizyonumuz</a>
               </div>
             </div>
-            <div className="col-md-3">
+            <div className="col-6 col-md-3">
               <div className="footer-link">
                 <h4 className="footer-link__title">İletişim</h4>
                 <a href="#">Bize Ulaşın</a>
                 <a href="#">Sıkça Sorulan Sorular</a>
               </div>
             </div>
-            <div className="col-md-3">
+            <div className="col-6 col-md-3">
               <div className="footer-link">
                 <h4 className="footer-link__title">Gizlilik Sözleşmesi</h4>
                 <a href="#">Mesafeli Satış Sözleşmesi</a>

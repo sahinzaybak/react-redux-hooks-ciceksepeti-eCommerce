@@ -1,37 +1,57 @@
+@import '../../variables.scss';
+
 .footer{
   position: relative;
   z-index: 9;
   background-color: #F2F2F2;
   padding: 145px 0 0;
   margin-top: 85px;
+  @media (max-width: $tabletScreen) {
+    padding-top: 50px;
+  }
   &-app{
     position: relative;
     background-color: white;
     height: 222px;
     border-radius: 111px;
+    @media (max-width: $tabletScreen) {
+      height: auto;
+      border-radius: 24px;
+      padding: 40px
+    }
+
+    &__logos{
+      @media (max-width: $tabletScreen) {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    
     &__detail{
-     
-      
       margin-left: 40px;
     }
     &__image{
       position: relative;
-    top: -4.3em;
+      top: -4.3em;
+      @media (max-width: $tabletScreen) {
+        text-align: center;
+      }
       img{
         width: 352px;
-       
+        @media (max-width: $tabletScreen) {
+          width: 50%;
+        }
       }
     }
    
     &__qr-image{
       width: 60px;
       margin-right: 20px;
-
     }
     &__text{
       color:black;
-        font-size: 18px;
-        font-weight: 800;
+      font-size: 18px;
+      font-weight: 800;
     }
     &__small-text{
       color:black;
@@ -57,6 +77,9 @@
 
   &-link{
     text-align: center;
+    @media (max-width: $tabletScreen) {
+     display: none;
+    }
     &__title{
       font-size: 18px;
       color: #044DC3;
@@ -73,6 +96,9 @@
     max-width: 1320px;
     width: 85%;
     margin: 0 auto;
+    @media (max-width: $tabletScreen) {
+      display: none;
+     }
     &__text{
       font-size: 15px;
       text-align: center;
@@ -82,10 +108,12 @@
   &-copyright{
     background-color: #E6E6E6;
     margin-top: 50px;
+    @media (max-width: $tabletScreen) {
+      display: none;
+    }
     &__text{
       padding: 18px;
       text-align: center;
     }
   }
-
 }

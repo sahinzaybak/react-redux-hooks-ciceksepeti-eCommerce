@@ -10,6 +10,7 @@ import productDetailPage from './pages/product-detail.jsx'
 import basketPage from './pages/basket.jsx'
 import paymentPage from './pages/payment.jsx'
 import previousOrder from './pages/previousOrder'
+import notFound from './components/shared/notFound'
 
 //Global css
 import 'bootstrap/dist/css/bootstrap.css';
@@ -21,17 +22,16 @@ function App() {
   loginUserInfo = JSON.parse(localStorage.getItem("login"))
   return (
     <div className="App">
-      {loginUserInfo == null && history.push("/login")}
-
-      <Route exact path='/' component={loginPage}></Route>
-      <Route path="/" render={(props) => (props.location.pathname !== "/") && <Header /> }></Route>
-      <Route exact path='/products' component={productsPage}></Route>
-      <Route exact path='/basket' component={basketPage}></Route>
-      <Route exact path='/payment' component={paymentPage}></Route>
+      {loginUserInfo == null && history.push("/giris")}
+      <Route exact path='/giris' component={loginPage}></Route>
+      <Route path="/" render={(props) => (props.location.pathname !== "/giris") && <Header /> }></Route> 
+      <Route exact path='/' component={productsPage}></Route>
+      <Route exact path='/urunler' component={productsPage}></Route>
+      <Route exact path='/urunler/:slug' component={productDetailPage}></Route>
+      <Route exact path='/sepetim' component={basketPage}></Route>
+      <Route exact path='/odeme' component={paymentPage}></Route>
       <Route exact path='/siparislerim' component={previousOrder}></Route>
-      <Route exact path='/detail/:slug' component={productDetailPage}></Route>
-      <Route path="/" render={(props) => (props.location.pathname !== "/") && <Footer /> }></Route>
-      
+      <Route path="/" render={(props) => (props.location.pathname !== "/giris") && <Footer /> }></Route>
     </div>
   );
 }

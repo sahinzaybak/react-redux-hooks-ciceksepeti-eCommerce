@@ -6,7 +6,7 @@ const CategoriesLoader = () => {
   return (
     <div className="categories-loader">
       <div className="row">
-        <ContentLoader height={200} width={1480} speed={1} viewBox="0 0 1480 200"  primaryColor="#242b34" secondaryColor="#343d4c">
+        <ContentLoader height={200} width={1480} speed={1} viewBox="0 0 1480 200" primarycolor="#242b34" secondarycolor="#343d4c">
           <rect x="15" y="10" rx="12" ry="12"width="200" height="20" />
 
           <rect x="15" y="44" rx="12" ry="12" width="11%" height="45" />

@@ -1,7 +1,9 @@
+import {FETCH_ADD_BASKET, GET_BASKET_STORAGE, FETCH_BASKET_ACTION_COUNT_ITEM } from '../constans';
+
 export const fetchAddBasket = (product, defaultPrice) => {
   return async dispatch => {
     dispatch({
-      type: "FETCH_ADD_BASKET",
+      type: FETCH_ADD_BASKET,
       payload: {
         product,
         defaultPrice:defaultPrice,
@@ -14,7 +16,7 @@ export const fetchAddBasket = (product, defaultPrice) => {
 export function getBasketStorage() {
   return async dispatch => {
     dispatch({
-      type: "GET_BASKET_STORAGE",
+      type: GET_BASKET_STORAGE,
       payload: JSON.parse(localStorage.getItem("basket"))
     });
   };
@@ -23,7 +25,7 @@ export function getBasketStorage() {
 export function fetchBasketItemActionCount(newPrice, productCount, productId, defaultPrice) {
   return async dispatch => {
     dispatch({
-      type: "FETCH_BASKET_ACTION_COUNT_ITEM",
+      type: FETCH_BASKET_ACTION_COUNT_ITEM,
       payload: {
         newPrice:newPrice,
         productCount:productCount,

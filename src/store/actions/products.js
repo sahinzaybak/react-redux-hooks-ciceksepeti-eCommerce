@@ -1,11 +1,12 @@
 import axios from 'axios'
+import {FETCH_PRODUCT_LIST, FETCH_PRODUCT_DETAIL, FETCH_SEARCHED_PRODUCT} from '../constans';
 const BASE_URL = process.env.REACT_APP_API_URL
 
 export const fetchProductList = () => {
   return async dispatch => {
     await axios.get(`${BASE_URL}/products`).then(value => {
       dispatch({
-        type: "FETCH_PRODUCT_LIST",
+        type: FETCH_PRODUCT_LIST,
         payload: value.data
       });
     });
@@ -16,7 +17,7 @@ export const fetchProductDetail = (slug) => {
   return async dispatch => {
     await axios.get(`${BASE_URL}/product-detail?slug=${slug}`).then(value => {
       dispatch({
-        type: "FETCH_PRODUCT_DETAIL",
+        type: FETCH_PRODUCT_DETAIL,
         payload: value.data
       });
     });
@@ -27,15 +28,14 @@ export const fetchSearchedProduct = (searchedProduct) => {
   return async dispatch => {
     await axios.get(`${BASE_URL}/products?name=${searchedProduct}`).then(value => {
       dispatch({
-        type: "FETCH_SEARCHED_PRODUCT",
+        type: FETCH_SEARCHED_PRODUCT,
         payload: value.data
       });
     });
   };
 }
 
-
-export const fetchProductAddComment = (comment, star, product, productComment ) => {
+export const fetchProductAddComment = (comment, star, product, productComment, commentOwner ) => {
   return function () {
     axios.put(`${BASE_URL}/product-detail/${product.id}`, {
       id: product.id,
@@ -49,7 +49,7 @@ export const fetchProductAddComment = (comment, star, product, productComment ) 
         ...productComment,
         {
         star: star,
-        commentOwner: "Şahin Zaybak",
+        commentOwner: commentOwner,
         comment: comment
       }]
     })

@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
+import {Link} from 'react-router-dom';
+import { useHistory } from "react-router";
 import search from '../../assets/images/search.svg'
 import { debounce } from 'lodash'
 
@@ -9,6 +11,7 @@ import {fetchSearchedProduct} from '../../store/actions/products'
 let searchedProductList,isActiveShadow;
 const Search = () => {
   const dispatch = useDispatch()
+  const history = useHistory();
   const [loading, setLoading] = useState(false)
   searchedProductList = useSelector(state => state.products.searchedProductList)
   isActiveShadow = useSelector(state => state.basket.activeShadow)
@@ -43,7 +46,10 @@ const Search = () => {
     {searchedProductList.length != 0 && 
       <div className={`header-search__result ${isActiveShadow  ? "active" : ""}`}>
         {searchedProductList.map((searchList) => 
-          <div className="search-item d-flex align-items-center">
+          <div className="search-item d-flex align-items-center" key={searchList.id} onClick={()=>{
+            history.push(`/urunler/${searchList.slug}`)
+            window.location.reload()
+            }}>
             <div className="d-flex align-items-center justify-content-between w-100">
               <div className="d-flex align-items-center">
                 <img className="mr-2" src={searchList.image} alt=""/>

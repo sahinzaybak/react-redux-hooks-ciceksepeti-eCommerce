@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../assets/scss/layout/footer.scss'
+
 //Components
 import AppArea from '../footer/app-area'
 import FooterMain from '../footer/footer-main'

@@ -12,14 +12,14 @@ import '../../assets/scss/product-detail-comments.scss'
 import {fetchProductAddComment, fetchProductDetail } from '../../store/actions/products'
 
 const { TextArea } = Input;
-let userName; 
+let userInfo; 
 const ProductComments = ({product, productComments}) => {
   const dispatch = useDispatch()
   const [form] = Form.useForm();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [rating, setRating] = useState(3)
-
+  userInfo = JSON.parse(localStorage.getItem("login"))
   const showModal = () => {
     setIsModalVisible(true);
   };
@@ -34,7 +34,7 @@ const ProductComments = ({product, productComments}) => {
 
   async function addComment(values) { // Yorum Yap
     setLoading(true);
-    await dispatch(fetchProductAddComment(values.comment, rating, product, productComments));
+    await dispatch(fetchProductAddComment(values.comment, rating, product, productComments, userInfo.name));
     setTimeout(() => {
       store.addNotification({
         message: "Yorumunuz gönderildi.",
@@ -91,8 +91,8 @@ const ProductComments = ({product, productComments}) => {
     
     {productComments.length != 0 &&
       <div className="comments-wrp">
-        {productComments.map((comment) => 
-          <div className="comments-item">
+        {productComments.map((comment,index) => 
+          <div className="comments-item" key={index}>
             <div className="d-flex">
               <Avatar className="comments-item__avatar mr-3" name={comment.commentOwner} round={true} />
               <div className="d-flex flex-column w-100">

@@ -1,19 +1,31 @@
 @import './colors.scss';
+@import '../variables.scss';
+
 .product-detail {
   position: relative;
   padding: 40px 0 0px;
+  @media (max-width: $largeScreen) {
+    padding: 70px 0 0px;
+  }
   &__name {
     font-size: 33px;
     font-weight: 600;
   }
   &__image {
     height: 550px;
+    @media (max-width: $tabletScreen) {
+      height: 250px;
+      margin-bottom: 20px;
+    }
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 12px;
       border: 1px solid #ececec;
+      @media (max-width: $tabletScreen) {
+        object-fit: contain;
+      }
     }
   }
   &__desc {
@@ -31,6 +43,10 @@
       border-radius: 6px;
       border:1px solid #e6e6e6;
     }
+    @media (max-width: $tabletScreen) {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 
   &__add-basket {
@@ -47,6 +63,11 @@
     transition: all .3s;
     &:hover{
       background-color: #5fca57;
+    }
+    @media (max-width: $tabletScreen) {
+      width: 115px;
+      height: 40px;
+      font-size: 15px;
     }
   }
 
@@ -67,6 +88,11 @@
     justify-content: space-between;
     padding: 0 45px;
     z-index: 9;
+    @media (max-width: $tabletScreen) {
+     width: 100%;
+     bottom: 70px;
+     padding: 16px;
+    }
     
     &-name{
       display: flex;
@@ -75,15 +101,22 @@
       font-size: 18px;
       width: 300px;
       line-height: 1.2;
-
+      @media (max-width: $tabletScreen) {
+        font-size: 13px;
+        width: 200px;
+      }
     }
     &-info {
+      display: flex;
       img{
         width: 64px;
         height: 64px;
         border: 1px solid #ececec;
         border-radius: 12px;
         padding: 4px;
+      }
+      @media (max-width: $tabletScreen) {
+        display: none;
       }
     }
     &-price {
@@ -94,6 +127,10 @@
     }
     .quantity{
       margin-left: -17%;
+      @media (max-width: $tabletScreen) {
+        margin-left: 0;
+        width: 100%;
+      }
     }
     &.disabled{
       .quantity{
@@ -104,6 +141,10 @@
       }
       .product-detail__sticky-price{
         font-size: 30px;
+        @media (max-width: $tabletScreen) {
+          font-size: 23px;
+          width: 70px;
+        }
       }
     }
   }

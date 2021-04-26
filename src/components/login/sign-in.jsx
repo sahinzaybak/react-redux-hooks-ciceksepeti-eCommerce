@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { useHistory } from "react-router";
 import { store } from 'react-notifications-component';
@@ -8,14 +8,19 @@ import "antd/dist/antd.css";
 
 //Actions
 import {fetchSignIn} from '../../store/actions/auth'
-import { useState } from 'react';
  
 let loginUserInfo;
-const SignIn = (props) => {
+const SignIn = () => {
   const dispatch = useDispatch()
   const history = useHistory();
   const [loading, setLoading] = useState(false);
   loginUserInfo = useSelector(state => state.auth.loginUserInfo)
+
+  useEffect(() => {
+    localStorage.clear();
+    dispatch({ type: 'FETCH_BASKET_CLEAR' , payload: []})
+    history.push("/giris")
+  }, []);
  
   const validateMessages = {
     required: 'E-mail alanı boş bırakılmaz!',
@@ -40,13 +45,13 @@ const SignIn = (props) => {
           onScreen: false
         },
       })
+      localStorage.setItem('login', JSON.stringify({
+        id:loginUserInfo.id,
+        name:loginUserInfo.name,
+        email:loginUserInfo.email
+      }))
       setTimeout(() => {
-          history.push("/products")
-          localStorage.setItem('login', JSON.stringify({
-            id:loginUserInfo.id,
-            name:loginUserInfo.name,
-            email:loginUserInfo.email
-          }))
+        history.push("/urunler")
       }, 2800);
     }
     else{

@@ -32,17 +32,17 @@ class previousOrder extends PureComponent {
   }
   render() {
     return (
-      <div className="basket mt-3 previous">
+      <div className="basket mt-0 mt-md-5 previous">
         <div className="custom-container">
         {this.props.previousOrderList.length == 0 && 
-          <div className="d-flex justify-content-between align-items-center no-product flex-column flex-md-row mt-4 mt-md-0">
+          <div className="d-flex justify-content-between align-items-center basket-no-product flex-column flex-md-row mt-4 mt-md-0">
             <div className="d-flex mb-4 mb-md-0">
               <img className="mr-4" src={basketImg} alt="" />
               <h5>Önceden yaptığınız alışverişiniz bulunmamaktadır.</h5>
             </div>
             <div>
             <Link to="/">
-              <button className="button green">Hemen Alışverişe Başla</button>
+              <button className="button start-shopping">Hemen Alışverişe Başla</button>
             </Link>
             </div>
           </div>      
@@ -51,7 +51,7 @@ class previousOrder extends PureComponent {
           <>
            <div className="d-flex align-items-center">
               <img className="mr-2" src={basketImg} alt=""/>
-               <h3>Siparişleri</h3>
+               <h3>Siparişlerim</h3>
             </div>
           <div className="row mt-4">
             <div className="col-md-8">

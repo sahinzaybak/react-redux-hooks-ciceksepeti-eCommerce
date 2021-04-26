@@ -16,7 +16,9 @@ class productDetail extends PureComponent {
   componentDidMount() {
     const slug = this.props.match.params.slug; 
     this.props.fetchProductDetail(slug);
+    
   }
+ 
 
   render() {
     return (

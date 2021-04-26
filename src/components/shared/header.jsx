@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import '../../assets/scss/layout/header.scss'
 import logo from '../../assets/images/logo.svg'
@@ -11,20 +11,20 @@ import ProgressBar from '../header/progress'
 import Actions from '../header/actions'
 import BasketSticky from './basket-list-sticky'
 
-
 let isActiveShadow,isActiveBasketList,searchListOpen;
 const Header = () => {
   const dispatch = useDispatch() 
    isActiveShadow = useSelector(state => state.basket.activeShadow)
    isActiveBasketList = useSelector(state => state.basket.activeBasketList)
    searchListOpen = useSelector(state => state.basket.searchListOpen)
+   
     return (
       <>
       <div className={`header d-flex align-items-center ${searchListOpen ? "active" : ""}`}>
         <div className="custom-container">
           <div className="d-flex align-items-center">
-            <div className="d-flex align-items-center w-100">
-              <Link to="/products" className="header-logo">
+            <div className="d-flex align-items-center w-100 flex-column flex-md-row">
+              <Link to="/urunler" className="header-logo">
                 <img src={logo} alt=""/>
               </Link>
               <Search />

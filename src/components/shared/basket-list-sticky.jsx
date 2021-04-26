@@ -20,6 +20,7 @@ const BasketListSticky = () => {
   useEffect(() => { 
     setTotalPrice(basketList.reduce((a,v) =>  a + v.product.price, 0).toFixed(2)) //Ürün toplamı
   },[basketList])
+  
 
   return (
     <div className={`basket-list-sticky ${isActiveBasketList ? "active" : ""}`}>
@@ -33,7 +34,7 @@ const BasketListSticky = () => {
       <div className="d-flex flex-column justify-content-between h-100">
         <div className="basket-list mt-3">
           {basketList.map((basket,index) => 
-            <div className="basket-list__item">
+            <div className="basket-list__item" key={index}>
               <div className="d-flex">
                 <>
                   <img className="basket-list__img mr-2" src={basket.product.image} alt=""/>
@@ -62,7 +63,12 @@ const BasketListSticky = () => {
           </div>
           <div className="basket-list__action d-flex flex-column">
 
-            <Link to={"/basket"} className="basket-list__view-button mb-3">Sepeti Görüntüle</Link>
+            <Link to={"/sepetim"} className="basket-list__view-button mb-3" onClick={() => {
+          dispatch({ type: 'BASKET_LIST_OPEN', payload: false })
+          dispatch({ type: 'SEARCH_LIST_CLEAR', payload: [] })
+          dispatch({ type: 'SEARCH_LIST_RESULT_OPEN', payload: false })
+          dispatch({ type: 'ACTIVE_SHADOW', payload: false })
+        }}>Sepeti Görüntüle</Link>
             <a className="basket-list__payment-button">Ödeme Yap</a>
           </div>
         </div>

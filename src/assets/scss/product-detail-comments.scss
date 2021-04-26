@@ -1,4 +1,6 @@
 @import './colors.scss';
+@import '../variables.scss';
+
 .comments{
   &__add-comment{
     font-weight: 600;
@@ -27,6 +29,10 @@
     border: 1px solid #e6e6e6;
     border-radius: 12px;
     box-shadow: #096dd914 1px 1px 60px 6px;
+    @media (max-width: $tabletScreen) {
+      width: 100%;
+      padding: 22px;
+    }
   }
   &-item{
     padding-bottom: 20px;
@@ -60,19 +66,14 @@
 
 .button-modal{
   padding: 9px;
-    display: block;
-    text-align: center;
-    margin-left: auto;
+  display: block;
+  text-align: center;
+  margin-left: auto;
 }
 
 .ant-modal-content .react-rater-star{
   font-size: 40px;
 }
-
-textarea{
-  height: 150px !important;
-}
-
 
 .ant-modal-header{
   background-color: transparent;
