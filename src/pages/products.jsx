@@ -11,13 +11,21 @@ import ProductList from '../components/products/product-list'
 
 //Actions
 import {fetchCategoryList} from '../store/actions/categories'
-import {fetchProductList} from '../store/actions/products'
+import {fetchProductList,fetchProductFilter} from '../store/actions/products'
 import {getBasketStorage} from '../store/actions/basket'
 
 class products extends PureComponent {
-  componentDidMount(){
+  async componentDidMount(){
     this.props.fetchCategoryList()
-    this.props.fetchProductList()
+    const selectedCategory = JSON.parse(localStorage.getItem("selectedCategory"))
+
+    if( selectedCategory != null){
+      await this.props.fetchProductList()
+      await this.props.fetchProductFilter(selectedCategory.catName)
+    }
+    else{
+      this.props.fetchProductList()
+    }     
   }
 
   render() {
@@ -42,7 +50,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   fetchCategoryList,
   fetchProductList,
-  getBasketStorage
+  getBasketStorage,
+  fetchProductFilter
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(products);

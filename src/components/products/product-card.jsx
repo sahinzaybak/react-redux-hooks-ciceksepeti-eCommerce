@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom';
-import LazyLoad from 'react-lazyload';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 
 //Actions
 import {fetchAddBasket, fetchBasketItemActionCount} from '../../store/actions/basket'
@@ -10,6 +12,7 @@ let basketList
 const ProductCard = ({product}) => {
   basketList = useSelector(state => state.basket.basketList)
   const dispatch = useDispatch()
+  const [imageLoaded, setImageLoaded] = useState(false)
   const [loading, setLoading] = useState(false)
   const [showCount, setShowCount] = useState(false)
   const [addBasketText, setAddBasketText] = useState("Sepete Ekle")
@@ -28,7 +31,9 @@ const ProductCard = ({product}) => {
 
   useEffect(() => {
     setDefaultPrice('')
-    setDefaultPrice(product.price)
+    setTimeout(() => {
+      setDefaultPrice(product.price.toFixed(2))
+    }, 0);
   }, []);
 
   useEffect(() => {
@@ -51,9 +56,18 @@ const ProductCard = ({product}) => {
         <div className={`product-list__item d-flex flex-column justify-content-between ${showCount ? "selected" : ""}`}>
           <>
             <Link to={`/urunler/${product.slug}`}>
-              <LazyLoad height={50}>
-                <img src={product.image} alt={product.name} />            
-              </LazyLoad>
+              {/* <LazyLoadImage src={product.image}  alt={product.name} */}
+              {imageLoaded ? null :
+                <img src="https://blog.ciceksepeti.com/wp-content/uploads/2020/05/CS_Logo.png" style={{
+                  width: "250px",
+                  height: "170px",
+                  objectFit:'cover',
+                }}/>
+              }
+              <img src={product.image} alt={product.image} onLoad={() => 
+                setImageLoaded(true)} 
+                style={imageLoaded ? {} : {display: 'none'}
+              }/>  
             </Link>
             <p className="category mt-2">{product.category}</p>
             <h2 className="product-list__name mt-2" alt={product.name}>{product.name}</h2>

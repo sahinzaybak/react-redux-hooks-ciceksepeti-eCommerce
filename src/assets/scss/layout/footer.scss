@@ -29,6 +29,9 @@
     
     &__detail{
       margin-left: 40px;
+      @media (max-width: $mobile) {
+        margin-left: 0;
+      }
     }
     &__image{
       position: relative;
@@ -52,10 +55,18 @@
       color:black;
       font-size: 18px;
       font-weight: 800;
+      @media (max-width: $mobile) {
+        text-align: center;
+      }
     }
     &__small-text{
       color:black;
       font-size: 16px;
+      @media (max-width: $mobile) {
+        text-align: center;
+        width: 100%;
+        display: block;
+      }
     }
   }
 
@@ -98,7 +109,7 @@
     margin: 0 auto;
     @media (max-width: $tabletScreen) {
       display: none;
-     }
+    }
     &__text{
       font-size: 15px;
       text-align: center;

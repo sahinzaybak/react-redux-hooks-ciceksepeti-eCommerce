@@ -38,7 +38,7 @@ class basket extends PureComponent {
               <h5>Sepetinizde ürün bulunmamaktadır.</h5>
             </div>
            <div>
-            <Link to="/products">
+            <Link to="/urunler">
              <button className="button start-shopping">Hemen Alışverişe Başla</button>
             </Link>
            </div>

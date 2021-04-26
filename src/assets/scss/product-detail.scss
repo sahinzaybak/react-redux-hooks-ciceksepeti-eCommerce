@@ -13,6 +13,9 @@
   }
   &__image {
     height: 550px;
+    border-radius: 12px;
+    border: 1px solid #ececec;
+    padding: 6px;
     @media (max-width: $tabletScreen) {
       height: 250px;
       margin-bottom: 20px;
@@ -21,8 +24,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 12px;
-      border: 1px solid #ececec;
       @media (max-width: $tabletScreen) {
         object-fit: contain;
       }
@@ -98,7 +99,7 @@
       display: flex;
       align-items: center;
       font-weight: $fw-600;
-      font-size: 18px;
+      font-size: 15px;
       width: 300px;
       line-height: 1.2;
       @media (max-width: $tabletScreen) {

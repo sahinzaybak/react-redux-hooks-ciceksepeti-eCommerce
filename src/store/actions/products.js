@@ -24,6 +24,15 @@ export const fetchProductDetail = (slug) => {
   };
 }
 
+export const fetchProductFilter = (catName) => {
+  return async dispatch => {
+    dispatch({
+      type: "FETCH_PRODUCT_FILTER",
+      payload: catName
+    });
+  };
+}
+
 export const fetchSearchedProduct = (searchedProduct) => {
   return async dispatch => {
     await axios.get(`${BASE_URL}/products?name=${searchedProduct}`).then(value => {

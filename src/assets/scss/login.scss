@@ -55,6 +55,9 @@
     border-radius: 50%;
     transition: all .6s 0.1s;
     transform: scale(2.5);
+    @media (max-width: $mobile) {
+      bottom:5%;
+    }
   }
 
   &-form {
@@ -71,6 +74,9 @@
     
     &__main{
       padding: 40px 55px 50px 26px;
+      @media (max-width: $mobile) {
+       padding-right: 26px;
+      }
     }
 
     &__left{
@@ -97,6 +103,9 @@
       font-size: 36px;
       letter-spacing: -0.8px;
       line-height: 1;
+      @media (max-width: $mobile) {
+        font-size: 22px;
+      }
     }
     &__desc{
       font-size: 19px;
@@ -111,6 +120,9 @@
     &__sign-in{
       position: absolute;
       transition: all .6s 0.1s;
+      @media (max-width: $mobile) {
+        width: 76%;
+      }
     }
     &__sign-up{
       opacity: 0;

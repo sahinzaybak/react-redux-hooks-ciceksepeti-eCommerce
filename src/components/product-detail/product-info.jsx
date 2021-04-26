@@ -19,16 +19,19 @@ const ProductInfo = ({productDetail,productComments}) => {
   },[])
   return (
     <div className="col-md-6">
-      <div className="product-detail__wrp pl-4">
+      <div className="product-detail__wrp pl-1 pt-4">
         <p className="category mb-1">Ürün Sahibi: {productDetail[0].company}</p>
         <h1 className="product-detail__name">{productDetail[0].name}</h1>
         <div className="d-block">
           <Rater total={5} rating={2} interactive={false} />
           <div className="d-flex align-items-center">
-            <p><Link to="comments" spy={true} smooth={true}>({productComments.length}) Yorum</Link></p>
-            <p className="ml-2"><Link to="comments" spy={true} smooth={true}><strong>Yorum Yap</strong></Link></p>
+            <p>
+              <Link to="comments" spy={true} smooth={true}>({productComments.length})Yorum</Link>
+            </p>
+            <p className="ml-2">
+              <Link to="comments" spy={true} smooth={true}><strong>Yorum Yap</strong></Link>
+            </p>
           </div>
-       
         </div>
         <div className="d-block mt-3">
           <span className="product-detail__titles">Ürün Açıklaması</span>

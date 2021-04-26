@@ -48,16 +48,16 @@ const SignUp= () => {
             },
           })
           dispatch(fetchSignIn(values.email, values.password)) //üye olduktan sonra sisteme otomatik giriş.
-          if(loginUserInfo != null){
-            localStorage.setItem('login', JSON.stringify({
-              id:loginUserInfo.id,
-              name:loginUserInfo.name,
-              email:loginUserInfo.email
-            }))
-          }
           setTimeout(() => {
+            if(loginUserInfo != null){
+              localStorage.setItem('login', JSON.stringify({
+                id:loginUserInfo.id,
+                name:loginUserInfo.name,
+                email:loginUserInfo.email
+              }))
+            }
             history.push("/urunler")
-          }, 2800);
+          }, 2500);
         }
         else{
           store.addNotification({

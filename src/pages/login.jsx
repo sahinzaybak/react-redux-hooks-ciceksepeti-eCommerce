@@ -27,9 +27,9 @@ class login extends PureComponent {
             <div className="row h-100">
               <div className="col-md-5">
                 <div className="login-form__left flex-center flex-column h-100">
-                  <h1 className="login-form__title mb-4 color-white text-center">Renkli Dünyaya Hoşgeldiniz.</h1>
-                  <p className="login-form__desc">{!this.state.isActiveSignUp ? this.state.signInDesc : this.state.signOutDesc}</p>
-                  <a href="#" className="button-ant transparent mt-4" onClick={this.signUpActice}>
+                  <h1 className="login-form__title mb-1 mb-md-4 text-center d-md-block color-white d-none">Renkli Dünyaya Hoşgeldiniz.</h1>
+                  <p className="login-form__desc d-md-block d-none" >{!this.state.isActiveSignUp ? this.state.signInDesc : this.state.signOutDesc}</p>
+                  <a href="#" className="button-ant transparent mt-4 mb-3 mb-md-0" onClick={this.signUpActice}>
                     {!this.state.isActiveSignUp ? this.state.signInButtonText : this.state.signOutButtonText}
                   </a>
                 </div>

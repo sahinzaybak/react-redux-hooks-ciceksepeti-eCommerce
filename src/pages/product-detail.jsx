@@ -14,12 +14,15 @@ import {fetchProductDetail} from '../store/actions/products'
 
 class productDetail extends PureComponent {
   componentDidMount() {
-    const slug = this.props.match.params.slug; 
-    this.props.fetchProductDetail(slug);
-    
+    this.props.fetchProductDetail(this.props.match.params.slug);
+  }
+
+  componentDidUpdate(prevSlug) {
+    if(prevSlug.match.params.slug !== this.props.match.params.slug){ //aynı component farklı veri
+      this.props.fetchProductDetail(this.props.match.params.slug);
+    }
   }
  
-
   render() {
     return (
       <div className="product-detail">

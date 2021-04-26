@@ -1,4 +1,5 @@
 import React,{useEffect, useState} from 'react';
+import {useSelector} from 'react-redux'
 import ProductLoader from '../content-loaders/products'
 
 //Imagess
@@ -8,17 +9,15 @@ import productListIco from '../../assets/images/product-list-ico.svg'
 import ProductCard from './product-card'
 import Campaigns from '../shared/campaigns'
 
-const ProductList = ({productList, categoryList}) => {
+let isFilterProduct;
+const ProductList = ({productList}) => {
   const [selectedCategory, setSelectedCategory] = useState()
-  useEffect(() => {
-    if(productList.length != 0){
-      setSelectedCategory(productList[0].category)
-    }
-  }, [productList]);
+  isFilterProduct = useSelector(state => state.products.isFilterProduct)
 
   useEffect(() => {
-    setSelectedCategory("Tüm Kategoriler")
-}, []);
+    if(productList.length != 0)
+      setSelectedCategory(productList[0].category)
+  }, [productList]);
 
   return (
     <div className="product-list mt-2">
@@ -28,7 +27,10 @@ const ProductList = ({productList, categoryList}) => {
         <>
           <div className="d-flex mb-3">
             <img src={productListIco} alt=""/>
-            <h3 className="product-list-title ml-2">{selectedCategory}</h3>
+            {isFilterProduct ? <h3 className="product-list-title ml-2">{selectedCategory}</h3> 
+            :
+              <h3 className="product-list-title ml-2">Tüm Kategoriler</h3> 
+            }
           </div>
           <div className="product-list__wrp d-flex flex-wrap">
             {productList.map((product) => 

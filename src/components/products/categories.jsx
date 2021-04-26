@@ -1,4 +1,4 @@
-import React, {useState}  from 'react';
+import React, {useState, useEffect}  from 'react';
 import '../../assets/scss/categories.scss'
 import {useDispatch} from 'react-redux'
 import categories from '../../assets/images/category.svg'
@@ -7,6 +7,20 @@ import CategoriesContentLoader from '../content-loaders/categories'
 const Categories = ({categoryList}) => {
   const dispatch = useDispatch()
   const [activeCategory, setActiveCategory] = useState()
+  const [defaultSelectedCat, setDefaultSelectedCat] = useState(true)
+
+  function selectCategory(catName, catId){
+    localStorage.setItem("selectedCategory", JSON.stringify({catName, catId}))
+  }
+  
+  useEffect(() => {
+    const selectedCategory = JSON.parse(localStorage.getItem("selectedCategory"))
+    if(selectedCategory != null){
+      setActiveCategory(selectedCategory.catId -1)
+      setDefaultSelectedCat(false)
+    }
+  }, []);
+
   return (
     <div className="categories mt-2">
       <div className="custom-container">
@@ -20,13 +34,20 @@ const Categories = ({categoryList}) => {
           <div className="categories-wrp">
             <a className="categories-item" onClick={() => {
                 dispatch({ type: 'FETCH_PRODUCT_FILTER', payload: "AllCategories"})
+                dispatch({ type: 'IS_CATEGORY_FILTERED', payload: false})
+                setDefaultSelectedCat(true)
+                setActiveCategory(-1)
+                localStorage.removeItem('selectedCategory')
               }}>
-              <p className="categories-item--active">Tüm Kategoriler</p>
+              <p className={`p-0 categories-item${defaultSelectedCat ? "--active" : ""}`}>Tüm Kategoriler</p>
             </a>
             {categoryList.map((category,index) =>
               <a className="categories-item" key={category.id} onClick={() => {
+                selectCategory(category.categoryName, category.id)
                 setActiveCategory(index)
+                setDefaultSelectedCat(false)
                 dispatch({ type: 'FETCH_PRODUCT_FILTER', payload: category.categoryName})
+                dispatch({ type: 'IS_CATEGORY_FILTERED', payload: true})
               }}>
               <p className={`p-0 categories-item${index == activeCategory ? "--active" : ""}`}>{category.categoryName}</p>
               </a>
@@ -36,7 +57,6 @@ const Categories = ({categoryList}) => {
         }
       </div>
     </div>
-
   );
 };
 

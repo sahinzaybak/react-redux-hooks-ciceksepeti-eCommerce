@@ -18,6 +18,7 @@
     "react-content-loader": "^6.0.3",
     "react-debounce-input": "^3.2.3",
     "react-dom": "^17.0.1",
+    "react-lazy-load-image-component": "^1.5.1",
     "react-lazyload": "^3.2.0",
     "react-notifications-component": "^3.1.0",
     "react-rater": "^5.1.1",

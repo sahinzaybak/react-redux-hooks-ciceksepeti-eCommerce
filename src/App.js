@@ -27,7 +27,7 @@ function App() {
       <Route path="/" render={(props) => (props.location.pathname !== "/giris") && <Header /> }></Route> 
       <Route exact path='/' component={productsPage}></Route>
       <Route exact path='/urunler' component={productsPage}></Route>
-      <Route exact path='/urunler/:slug' component={productDetailPage}></Route>
+      <Route exact path='/urunler/:slug' component={productDetailPage} ></Route>
       <Route exact path='/sepetim' component={basketPage}></Route>
       <Route exact path='/odeme' component={paymentPage}></Route>
       <Route exact path='/siparislerim' component={previousOrder}></Route>

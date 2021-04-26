@@ -66,7 +66,7 @@ const ProductComments = ({product, productComments}) => {
           </p>
       </div>
       
-      <Modal title="Merhaba Şahin, ürüne yorum yapabilir ve puan verebilirsin." visible={isModalVisible} onCancel={closeModal} footer={null}>
+      <Modal title="Buradan ürüne yorum yapabilir veya puan verebilirsin." visible={isModalVisible} onCancel={closeModal} footer={null}>
         <Form onFinish={addComment}>
           <div className="text-center">
             <h5>Ürüne Puan Ver</h5>
