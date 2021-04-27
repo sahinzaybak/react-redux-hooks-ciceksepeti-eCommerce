@@ -28,12 +28,13 @@ const ProductCard = ({product}) => {
     dispatch(fetchBasketItemActionCount(newPrice, productCount, productId));
   }
 
-  setTimeout(() => {
-    setDefaultPrice(product.price.toFixed(2))
-  }, 0);
-
+ 
   useEffect(() => {
     setDefaultPrice('')
+    setTimeout(() => {
+      setDefaultPrice(product.price.toFixed(2))
+    }, 0);
+  
   }, []);
 
   useEffect(() => {
@@ -96,14 +97,16 @@ const ProductCard = ({product}) => {
             :  
             <div className="quantity d-flex w-100">
               <p className="quantity-action" onClick={() => {
-                setProductCount(productCount -1); 
-                actionCount(productCount -1, product.id)} 
-                }>
+                if(productCount != 1 ){
+                  setProductCount(productCount -1); 
+                  actionCount(productCount -1, product.id)} 
+                }}>
               -</p>
               <p className="quantity-value text-center">{productCount}</p>
               <p className="quantity-action" onClick={() => {
-                setProductCount(productCount +1); 
-                actionCount(productCount +1, product.id); 
+                if(productCount != 6 ){
+                  setProductCount(productCount +1); 
+                  actionCount(productCount +1, product.id)} 
                 }}>
               +</p>
             </div>
