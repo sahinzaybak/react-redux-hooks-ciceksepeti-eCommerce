@@ -7,7 +7,7 @@
   &__add-comment{
     font-weight: 600;
     font-size: 16px;
-    color: #50b648;
+    color: $green-main;
     border: 1px solid #50b648;
     width: max-content;
     margin: 0 auto;
@@ -17,7 +17,7 @@
     cursor: pointer;
     transition: all .3s;
     &:hover{
-      background-color: #50b648;
+      background-color: $green-main;
       color:white;
       border-color: #449c3d;
     }

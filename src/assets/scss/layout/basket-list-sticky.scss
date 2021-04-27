@@ -81,17 +81,17 @@
     }
     &__payment-button{
       width: 100%;
-      border: 1px solid #50b648;
+      border: 1px solid $green-main;
       padding: 8px;
       border-radius: 50px;
       font-weight: 600;
       text-align: center;
       font-size: 17px;
-      background-color: #50b648;
+      background-color: $green-main;
       color:white;
       transition: all .3s;
       &:hover{
-        background-color: #60c558;
+        background-color: $green-main-hover
       }
     }
   }
