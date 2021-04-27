@@ -7,7 +7,7 @@ import CategoriesContentLoader from '../content-loaders/categories'
 const Categories = ({categoryList}) => {
   const dispatch = useDispatch()
   const [activeCategory, setActiveCategory] = useState()
-  const [defaultSelectedCat, setDefaultSelectedCat] = useState(true)
+  const [defaultSelectedCat, setDefaultSelectedCat] = useState()
 
   function selectCategory(catName, catId){
     localStorage.setItem("selectedCategory", JSON.stringify({catName, catId}))
@@ -19,6 +19,7 @@ const Categories = ({categoryList}) => {
       setActiveCategory(selectedCategory.catId -1)
       setDefaultSelectedCat(false)
     }
+    else setDefaultSelectedCat(true)
   }, []);
 
   return (
