@@ -1,4 +1,4 @@
-import React, {useState, useEffect}  from 'react';
+import React, {useState, useEffect, useLayoutEffect}  from 'react';
 import '../../assets/scss/categories.scss'
 import {useDispatch} from 'react-redux'
 import categories from '../../assets/images/category.svg'
@@ -13,7 +13,7 @@ const Categories = ({categoryList}) => {
     localStorage.setItem("selectedCategory", JSON.stringify({catName, catId}))
   }
   
-  useEffect(() => {
+  useLayoutEffect(() => {
     const selectedCategory = JSON.parse(localStorage.getItem("selectedCategory"))
     if(selectedCategory != null){
       setActiveCategory(selectedCategory.catId -1)
