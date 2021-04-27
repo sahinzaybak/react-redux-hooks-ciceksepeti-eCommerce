@@ -56,7 +56,7 @@ class previousOrder extends PureComponent {
           <div className="row mt-4">
             <div className="col-md-8">
               {this.props.previousOrderList.map((prevOrderList) => (
-                <PreviousOrder prevOrder={prevOrderList}/>
+                <PreviousOrder prevOrder={prevOrderList} key={prevOrderList.id}/>
               ))}
             </div>
           </div>

@@ -81,4 +81,10 @@
     border: 1px solid $blue-main;
     cursor: pointer;
   }
+  .react-rater{
+    text-align: right;
+    &-star{
+      font-size: 16px;
+    }
+  }
 }

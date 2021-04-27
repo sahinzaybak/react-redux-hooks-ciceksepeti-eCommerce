@@ -40,14 +40,16 @@ const ProductStickyAddBasket = ({productId, productName, productImage, productPr
       </div>
       <div className="quantity d-flex">
         <p className="quantity-action" onClick={() => {
-          setProductCount(productCount -1); 
-          actionCount(productCount -1, productId)}
+          if(productCount != 1 ){
+            setProductCount(productCount -1); 
+            actionCount(productCount -1, productId)}}
           }>
         -</p>
         <p className="quantity-value text-center">{productCount}</p>
         <p className="quantity-action" onClick={() => {
-          setProductCount(productCount +1); 
-          actionCount(productCount +1, productId)}
+          if(productCount != 6 ){
+            setProductCount(productCount +1); 
+            actionCount(productCount +1, productId)}}
           }>
        +</p>
       </div>

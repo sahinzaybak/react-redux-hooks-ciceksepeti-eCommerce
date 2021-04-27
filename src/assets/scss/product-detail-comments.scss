@@ -2,6 +2,8 @@
 @import '../variables.scss';
 
 .comments{
+  border-bottom: 1px solid #f3f3f3;
+  padding-bottom: 35px;
   &__add-comment{
     font-weight: 600;
     font-size: 16px;

@@ -19,7 +19,7 @@ class products extends PureComponent {
     this.props.fetchCategoryList()
     const selectedCategory = JSON.parse(localStorage.getItem("selectedCategory"))
 
-    if( selectedCategory != null){
+    if(selectedCategory != null){
       await this.props.fetchProductList()
       await this.props.fetchProductFilter(selectedCategory.catName)
     }

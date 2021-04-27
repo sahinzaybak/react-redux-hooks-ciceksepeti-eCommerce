@@ -17,11 +17,10 @@ const AppArea = () => {
             <img className="footer-main__logo" src={logo} alt=""/>
             <div className="footer-main__social">
               <div className="d-flex">
-                <a href=""><img src={facebook} alt=""/></a>
-                <a href=""><img src={twitter} alt=""/></a>
-                <a href=""><img src={instagram} alt=""/></a>
-                <a href=""><img src={youtube} alt=""/></a>
-                <a href=""><img src={unkown} alt=""/></a>
+                <a href="https://www.facebook.com/ciceksepeti/" target="_blank"><img src={facebook} alt=""/></a>
+                <a href="https://twitter.com/ciceksepeti" target="_blank"><img src={twitter} alt=""/></a>
+                <a href="https://www.instagram.com/ciceksepeti/" target="_blank"><img src={instagram} alt=""/></a>
+                <a href="https://www.youtube.com/user/CicekSepeti" target="_blank"><img src={youtube} alt=""/></a>
               </div>
             </div>
             <p className="footer-main__kvkk">

@@ -4,6 +4,9 @@ import {useDispatch} from 'react-redux'
 import 'react-rater/lib/react-rater.css'
 import {Link} from 'react-scroll'
 
+//Actions
+import {fetchProductSuggestion} from '../../store/actions/products'
+
 const ProductInfo = ({productDetail,productComments}) => {
   const dispatch = useDispatch()
   useEffect(() => {
@@ -11,6 +14,10 @@ const ProductInfo = ({productDetail,productComments}) => {
     dispatch({ type: 'ACTIVE_SHADOW' , payload: false })
     dispatch({ type: 'SEARCH_LIST_RESULT_OPEN' , payload: false })
   }, []);
+
+  useEffect(() => {
+    dispatch(fetchProductSuggestion())
+  }, [productDetail]);
 
   useEffect(() => {
     return () => {
@@ -23,7 +30,7 @@ const ProductInfo = ({productDetail,productComments}) => {
         <p className="category mb-1">Ürün Sahibi: {productDetail[0].company}</p>
         <h1 className="product-detail__name">{productDetail[0].name}</h1>
         <div className="d-block">
-          <Rater total={5} rating={2} interactive={false} />
+          <Rater total={5} rating={productDetail[0].star} interactive={false} />
           <div className="d-flex align-items-center">
             <p>
               <Link to="comments" spy={true} smooth={true}>({productComments.length})Yorum</Link>

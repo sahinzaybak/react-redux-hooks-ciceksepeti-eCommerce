@@ -77,6 +77,7 @@
       .search-item{
         border-bottom: 1px solid #e8e8e8;
         padding: 12px 0;
+        cursor: pointer;
         img{
           width: 65px;
           height: 65px;
@@ -146,6 +147,9 @@
       border-color: #f54157 transparent transparent #f54157;
       border-radius: 3px 0px 0px 0px;
       transform: rotate(45deg);
+      @media (max-width: $tabletScreen) {
+       display: none;
+      }
     }
     &__title{
       font-size: 15px;

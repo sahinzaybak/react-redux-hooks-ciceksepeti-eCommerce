@@ -1,18 +1,21 @@
 import {
   FETCH_PRODUCT_LIST, 
   FETCH_PRODUCT_DETAIL,
+  FETCH_PRODUCT_LIST_SUGGESTION,
   FETCH_PRODUCT_FILTER,
   IS_CATEGORY_FILTERED, 
   FETCH_SEARCHED_PRODUCT,
   SEARCH_LIST_CLEAR,
   PRODUCT_LIST_CLEAR,
-  PRODUCT_DETAIL_CLEAR
+  PRODUCT_DETAIL_CLEAR,
+  SUGGESSTION_PRODUCT_CLEAR
 } 
 from '../constans';
 
 const initialState = {
   productList:[],
   productDetail:[],
+  productListSuggestion:[],
   filteredProductList: [],
   searchedProductList:[],
   isFilterProduct:false
@@ -26,11 +29,19 @@ export default (state = initialState, action) => {
         productList: action.payload,
         filteredProductList: action.payload
       }
+
     case FETCH_PRODUCT_DETAIL:
       return{
         ...state,
         productDetail: action.payload
       }
+
+    case FETCH_PRODUCT_LIST_SUGGESTION:
+      return{
+        ...state,
+        productListSuggestion: action.payload,
+      }
+
     case FETCH_PRODUCT_FILTER:
       let filteredProductList
       action.payload == "AllCategories" ?  filteredProductList = state.filteredProductList 
@@ -40,7 +51,8 @@ export default (state = initialState, action) => {
         ...state,
         productList: filteredProductList,
       }
-      case IS_CATEGORY_FILTERED:
+
+    case IS_CATEGORY_FILTERED:
       return{
         ...state,
         isFilterProduct: action.payload
@@ -60,6 +72,11 @@ export default (state = initialState, action) => {
         ...state,
         productList: action.payload
       }
+    case SUGGESSTION_PRODUCT_CLEAR:
+        return{
+          ...state,
+          productListSuggestion: action.payload
+        }
     case PRODUCT_DETAIL_CLEAR:
       return{
         ...state,

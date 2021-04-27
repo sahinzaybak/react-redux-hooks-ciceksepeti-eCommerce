@@ -1,6 +1,7 @@
 import {
   FETCH_PREVIOUS_ORDER, 
   FETCH_PREV_ORDER_STORAGE,
+  FETCH_PREV_CLEAR
 } 
 from '../constans';
 
@@ -11,7 +12,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_PREVIOUS_ORDER:
-      debugger;
       return{
         ...state,
         previousOrderList: [...state.previousOrderList, action.payload]
@@ -22,6 +22,12 @@ export default (state = initialState, action) => {
         ...state,
         previousOrderList: action.payload
       }
+
+    case FETCH_PREV_CLEAR:
+      return{
+        ...state,
+        previousOrderList: action.payload
+    }
     default:
       return state;
   }

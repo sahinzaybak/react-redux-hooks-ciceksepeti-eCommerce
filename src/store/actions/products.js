@@ -4,10 +4,21 @@ const BASE_URL = process.env.REACT_APP_API_URL
 
 export const fetchProductList = () => {
   return async dispatch => {
-    await axios.get(`${BASE_URL}/products`).then(value => {
+    await axios.get(`${BASE_URL}/products`).then(value => {   
       dispatch({
         type: FETCH_PRODUCT_LIST,
         payload: value.data
+      });
+    });
+  };
+}
+
+export const fetchProductSuggestion = () => {
+  return async dispatch => {
+    await axios.get(`${BASE_URL}/products`).then(value => {
+      dispatch({
+        type: "FETCH_PRODUCT_LIST_SUGGESTION",
+        payload: (value.data.sort(() => Math.random() - 0.5)).splice(1,10) //random ürün listesi
       });
     });
   };

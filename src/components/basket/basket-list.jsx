@@ -27,14 +27,16 @@ const BasketList  = ({basketList}) => {
     <div className="d-flex flex-md-row flex-column align-items-center justify-content-between">
       <div className="quantity d-flex">
         <p className="quantity-action" onClick={() => {
-          setProductCount(productCount -1); 
-          actionCount(productCount -1, basketList.product.id)}
+           if(productCount != 1 ){
+            setProductCount(productCount -1); 
+            actionCount(productCount -1, basketList.product.id)}}
           }>
         -</p>
         <p className="quantity-value text-center">{productCount}</p>
         <p className="quantity-action" onClick={() => {
-          setProductCount(productCount +1); 
-          actionCount(productCount +1, basketList.product.id)}
+          if(productCount != 6 ){
+            setProductCount(productCount +1); 
+            actionCount(productCount +1, basketList.product.id)}}
           }>
        +</p>
       </div>

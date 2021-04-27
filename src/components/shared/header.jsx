@@ -17,7 +17,6 @@ const Header = () => {
    isActiveShadow = useSelector(state => state.basket.activeShadow)
    isActiveBasketList = useSelector(state => state.basket.activeBasketList)
    searchListOpen = useSelector(state => state.basket.searchListOpen)
-   
     return (
       <>
       <div className={`header d-flex align-items-center ${searchListOpen ? "active" : ""}`}>

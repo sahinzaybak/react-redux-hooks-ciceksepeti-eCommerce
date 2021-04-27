@@ -28,8 +28,8 @@ const Basket = () => {
  
   return (
     <div className={`button header-bag flex-shrink-0 d-flex-center ${basketList.length == 0 ? "disabled" : ""}`} onClick={() => {
-      dispatch({ type: 'BASKET_LIST_OPEN' , payload: true })
-      dispatch({ type: 'ACTIVE_SHADOW' , payload: true })
+      dispatch({ type: 'BASKET_LIST_OPEN', payload: true })
+      dispatch({ type: 'ACTIVE_SHADOW', payload: true })
     }}>
       <img src={shoppBag} className="mr-1" alt=""/>
       <p className="header-bag__text">Sepetim</p>

@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import {Link} from 'react-router-dom';
 import Rater from 'react-rater'
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import {Link} from 'react-router-dom';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 //Actions
@@ -12,11 +11,12 @@ let basketList
 const ProductCard = ({product}) => {
   basketList = useSelector(state => state.basket.basketList)
   const dispatch = useDispatch()
+  const [imageLoaded, setImageLoaded] = useState(false)
   const [loading, setLoading] = useState(false)
   const [showCount, setShowCount] = useState(false)
   const [addBasketText, setAddBasketText] = useState("Sepete Ekle")
   const [defaultPrice, setDefaultPrice] = useState()
-  let [productCount, setProductCount] = useState(1)
+  const [productCount, setProductCount] = useState(1)
 
   async function addBasket(){ //sepete ekle
     await dispatch(fetchAddBasket(product, defaultPrice));
@@ -27,7 +27,7 @@ const ProductCard = ({product}) => {
     let newPrice = defaultPrice * productCount
     dispatch(fetchBasketItemActionCount(newPrice, productCount, productId));
   }
-  
+
   setTimeout(() => {
     setDefaultPrice(product.price.toFixed(2))
   }, 0);
@@ -55,14 +55,27 @@ const ProductCard = ({product}) => {
       <div className="product-list__cell">
         <div className={`product-list__item d-flex flex-column justify-content-between ${showCount ? "selected" : ""}`}>
           <>
-            <Link to={`/urunler/${product.slug}`}>
-              <LazyLoadImage src={product.image} effect="black-and-white"  alt={product.name} />
+            <Link to={`/urunler/${product.slug}`} onClick={() => {
+              dispatch({ type: 'PRODUCT_DETAIL_CLEAR', payload: []})
+              dispatch({ type: 'SUGGESSTION_PRODUCT_CLEAR' , payload: [] })
+            }}>
+              {/* <LazyLoadImage src={product.image}  alt={product.name} */}
+              {imageLoaded ? null :
+                <img src="https://blog.ciceksepeti.com/wp-content/uploads/2020/05/CS_Logo.png" style={{
+                  width: "250px",
+                  height: "170px",
+                  objectFit:'cover',
+                }}/>
+              }
+              <img src={product.image} alt={product.image} onLoad={() => 
+                setImageLoaded(true)} 
+                style={imageLoaded ? {} : {display: 'none'}
+              }/>  
             </Link>
             <div className="d-flex align-items-center justify-content-between mt-2">
               <p className="category">{product.category}</p>
               <Rater total={5} rating={product.star} interactive={false} />
             </div>
-            
             <h2 className="product-list__name mt-2" alt={product.name}>{product.name}</h2>
             </>
           <>
@@ -83,16 +96,14 @@ const ProductCard = ({product}) => {
             :  
             <div className="quantity d-flex w-100">
               <p className="quantity-action" onClick={() => {
-                if(productCount != 1 ){
-                  setProductCount(productCount -1); 
-                  actionCount(productCount -1, product.id)} 
-                }}>
+                setProductCount(productCount -1); 
+                actionCount(productCount -1, product.id)} 
+                }>
               -</p>
               <p className="quantity-value text-center">{productCount}</p>
               <p className="quantity-action" onClick={() => {
-                if(productCount != 6 ){
-                  setProductCount(productCount +1); 
-                  actionCount(productCount +1, product.id)} 
+                setProductCount(productCount +1); 
+                actionCount(productCount +1, product.id); 
                 }}>
               +</p>
             </div>

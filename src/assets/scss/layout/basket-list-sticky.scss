@@ -74,6 +74,10 @@
       font-weight: 600;
       text-align: center;
       font-size: 17px;
+      transition: all .3s;
+      &:hover{
+        background-color: white;
+      }
     }
     &__payment-button{
       width: 100%;
@@ -85,6 +89,10 @@
       font-size: 17px;
       background-color: #50b648;
       color:white;
+      transition: all .3s;
+      &:hover{
+        background-color: #60c558;
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import {ShoppingOutlined, FrownOutlined,ExclamationCircleOutlined } from '@ant-design/icons';
 import { useHistory } from "react-router";
-import {useSelector, useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import { Modal } from 'antd';
 import {Link} from 'react-router-dom';
 
@@ -24,6 +24,7 @@ const Actions = () => {
           setTimeout(() => {
             localStorage.clear();
             dispatch({ type: 'FETCH_BASKET_CLEAR' , payload: []})
+            dispatch({ type: 'FETCH_PREV_CLEAR' , payload: []})
             history.push("/giris")
           }, 1000);
         }).catch(() =>false);

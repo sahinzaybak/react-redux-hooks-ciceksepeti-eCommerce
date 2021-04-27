@@ -40,7 +40,6 @@ const Search = () => {
         <img src={search} alt="" className={`${loading ? "invisible" : ""}`}/>
         <div className={`spinner-border position-absolute ${!loading ? "invisible" : ""}`}></div>
         <input type="text" placeholder="Ürün Ara.." onChange={e => searchText(e)} />
-        <a href="#" className="button header-search__button">Ara</a>
       </div>
 
     {searchedProductList.length != 0 ?

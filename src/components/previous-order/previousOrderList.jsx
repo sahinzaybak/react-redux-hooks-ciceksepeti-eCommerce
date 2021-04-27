@@ -34,10 +34,10 @@ const previousOrderList = ({ prevOrder }) => {
        <div className="basket-previous-info">
          <div className="d-flex justify-content-between">
          <h6 className="mb-2 d-flex align-items-center">
-              <CheckCircleTwoTone twoToneColor="#52c41a" />Sipariş Tarihi: {prevOrder.orderDate}
+              <CheckCircleTwoTone className="mr-2" twoToneColor="#52c41a" />Sipariş Tarihi: {prevOrder.orderDate}
             </h6>
             <h6 className="mb-2 d-flex align-items-center">
-              <CheckCircleTwoTone twoToneColor="#52c41a" />Toplam Fiyat: {prevOrder.totalPrice}
+              <CheckCircleTwoTone className="mr-2" twoToneColor="#52c41a" />Toplam Fiyat: {prevOrder.totalPrice}
             </h6>
          </div>
            

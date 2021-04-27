@@ -22,7 +22,7 @@ const ProductList = ({productList}) => {
   return (
     <div className="product-list mt-2">
       <div className="custom-container">
-        {productList.length == 0 ? <ProductLoader />
+        {productList.length == 0 ? <ProductLoader loadProductCount={60} />
         :
         <>
           <div className="d-flex mb-3">

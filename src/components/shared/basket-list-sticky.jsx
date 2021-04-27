@@ -64,12 +64,17 @@ const BasketListSticky = () => {
           <div className="basket-list__action d-flex flex-column">
 
             <Link to={"/sepetim"} className="basket-list__view-button mb-3" onClick={() => {
-          dispatch({ type: 'BASKET_LIST_OPEN', payload: false })
-          dispatch({ type: 'SEARCH_LIST_CLEAR', payload: [] })
-          dispatch({ type: 'SEARCH_LIST_RESULT_OPEN', payload: false })
-          dispatch({ type: 'ACTIVE_SHADOW', payload: false })
-        }}>Sepeti Görüntüle</Link>
-            <a className="basket-list__payment-button">Ödeme Yap</a>
+              dispatch({ type: 'BASKET_LIST_OPEN', payload: false })
+              dispatch({ type: 'SEARCH_LIST_CLEAR', payload: [] })
+              dispatch({ type: 'SEARCH_LIST_RESULT_OPEN', payload: false })
+              dispatch({ type: 'ACTIVE_SHADOW', payload: false })
+            }}>Sepeti Görüntüle</Link>
+            <Link to={"/odeme"} className="basket-list__payment-button"onClick={() => {
+              dispatch({ type: 'BASKET_LIST_OPEN', payload: false })
+              dispatch({ type: 'SEARCH_LIST_CLEAR', payload: [] })
+              dispatch({ type: 'SEARCH_LIST_RESULT_OPEN', payload: false })
+              dispatch({ type: 'ACTIVE_SHADOW', payload: false })
+            }} >Ödeme Yap</Link>
           </div>
         </div>
     </div>
