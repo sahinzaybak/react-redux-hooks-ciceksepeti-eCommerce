@@ -19,8 +19,7 @@
     width: calc(100% / 7);
     padding: 0 10px 20px 10px;
     @media screen and (max-width: $mediumScreen) {
-      width: 160px;
-      display: inline-table;
+      width: 100%;
     }
     p{
       width: 100%;
@@ -34,6 +33,9 @@
       font-size: 16px;
       font-weight: $fw-600;
       transition: all .3s;
+      @media screen and (max-width: $mediumScreen) {
+        width: 140px;
+      }
       &:hover{
         background-color: $blue-main;
         color:white;

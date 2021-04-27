@@ -85,9 +85,17 @@
           border: 1px solid #e6e6e6;
           padding: 5px;
         }
+        p{
+          @media (max-width: $mobile) {
+            display: none;
+          }
+        }
         h3{
           font-size: 16px;
           width: 340px;
+          @media (max-width: $mobile) {
+            width: 100%;
+          }
         }
       }
     }
