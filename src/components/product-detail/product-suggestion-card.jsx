@@ -28,13 +28,11 @@ const ProductCard = ({product}) => {
     dispatch(fetchBasketItemActionCount(newPrice, productCount, productId));
   }
 
- 
   useEffect(() => {
     setDefaultPrice('')
     setTimeout(() => {
       setDefaultPrice(product.price.toFixed(2))
     }, 0);
-  
   }, []);
 
   useEffect(() => {

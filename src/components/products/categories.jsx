@@ -47,7 +47,7 @@ const Categories = ({categoryList}) => {
                 setActiveCategory(index)
                 setDefaultSelectedCat(false)
                 dispatch({ type: 'FETCH_PRODUCT_FILTER', payload: category.categoryName})
-                dispatch({ type: 'IS_CATEGORY_FILTERED', payload: true})
+                dispatch({ type: 'IS_CATEGORY_FILTERED', payload: true })
               }}>
               <p className={`p-0 categories-item${index == activeCategory ? "--active" : ""}`}>{category.categoryName}</p>
               </a>

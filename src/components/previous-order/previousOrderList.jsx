@@ -17,7 +17,7 @@ const previousOrderList = ({ prevOrder }) => {
                 <h5 className="mb-2 mt-2">{orderList.product.name}</h5>
               
               </div>
-              <div className="basket-item__counter text-left text-md-center ml- mr-0 ml-md-5 mr-md-5">
+              <div className="basket-item__counter text-center ml- mr-0 ml-md-5 mr-md-5">
                 <p className="mb-1">Adet</p>
                 <span>{orderList.count}</span>
               </div>

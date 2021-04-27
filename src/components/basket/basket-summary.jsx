@@ -11,7 +11,7 @@ const BasketSummary  = () => {
 
   useEffect(() => { 
     setTotalPrice(basketList.reduce((a,v) =>  a + v.product.price, 0).toFixed(2)) //Ürün toplamı
-    setCargoTotalPrice(basketList.reduce((a,v) =>  a = (a + v.product.price) + parseFloat('3.3'), 0 ).toFixed(2)) //+ 9,90
+    setCargoTotalPrice((basketList.reduce((a,v) =>  a + v.product.price,0) + 9.90).toFixed(2))//+ 9,90
     totalPrice >= 500 ? localStorage.setItem('totalPrice', totalPrice) : localStorage.setItem('totalPrice', cargoTotalPrice)
   })
   return (

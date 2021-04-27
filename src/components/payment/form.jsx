@@ -54,8 +54,11 @@ const Payment = () => {
               onOk() {
                 localStorage.removeItem('basket')
                 localStorage.removeItem("totalPrice")
+                localStorage.removeItem('selectedCategory')
+                localStorage.removeItem("totalPrice")
                 localStorage.setItem('previous-order', JSON.stringify(basketList))
                 dispatch({ type: 'FETCH_BASKET_CLEAR', payload: [] })
+                dispatch({ type: 'IS_CATEGORY_FILTERED', payload: false })
                 history.push("/urunler")
               },
             });

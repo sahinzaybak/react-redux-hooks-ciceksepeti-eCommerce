@@ -34,7 +34,7 @@ const SignUp= () => {
       await dispatch(fetchSignUp(values.username, values.email, values.password)).then(value => {
         if(value == "Created"){
           store.addNotification({
-            message: "Üye işlemi başarılı, yönlendiriliyorsunuz...",
+            message: "Üyelik işlemi başarılı, yönlendiriliyorsunuz...",
             type: "success",
             insert: "top",
             width:300,

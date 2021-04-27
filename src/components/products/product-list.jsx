@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import {useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import ProductLoader from '../content-loaders/products'
 
 //Imagess
@@ -11,13 +12,20 @@ import Campaigns from '../shared/campaigns'
 
 let isFilterProduct;
 const ProductList = ({productList}) => {
+  const dispatch = useDispatch()
   const [selectedCategory, setSelectedCategory] = useState()
   isFilterProduct = useSelector(state => state.products.isFilterProduct)
 
   useEffect(() => {
     if(productList.length != 0)
       setSelectedCategory(productList[0].category)
+
+    const selectedCategory = JSON.parse(localStorage.getItem("selectedCategory"))
+    if(selectedCategory != null)
+      dispatch({ type: 'IS_CATEGORY_FILTERED', payload: true })
   }, [productList]);
+
+ 
 
   return (
     <div className="product-list mt-2">

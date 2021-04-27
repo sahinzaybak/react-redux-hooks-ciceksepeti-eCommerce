@@ -1,16 +1,21 @@
 import React, {useState, useEffect} from 'react';
+import {DeleteOutlined } from '@ant-design/icons';
 import {useDispatch} from 'react-redux'
 
 //Actions
 import {fetchBasketItemActionCount} from '../../store/actions/basket'
 
-const BasketList  = ({basketList}) => {
+const BasketList  = ({basketList,index,basketCount}) => {
   const dispatch = useDispatch()
   const [productCount, setProductCount] = useState()
 
   function actionCount (productCount, productId){ //Ürün adedi arttır / azalt
     var newPrice = basketList.defaultPrice * productCount
     dispatch(fetchBasketItemActionCount(newPrice, productCount, productId));
+  }
+
+  function localClear(){
+    if(basketCount == 1) localStorage.removeItem('basket');
   }
 
   useEffect(() => { 
@@ -43,6 +48,12 @@ const BasketList  = ({basketList}) => {
       <div className="d-flex align-items-center">
         <p className="product-detail__sticky-price mr-0 mr-md-4">{basketList.product.price.toFixed(2)} ₺</p>
       </div>
+      {<span className="d-flex cursor-pointer" onClick={() => {
+          localClear(); 
+          dispatch({ type: 'BASKET_ITEM_DELETE', payload: index })
+        }}>
+        <DeleteOutlined />  
+      </span>}
     </div>
      
     </div>

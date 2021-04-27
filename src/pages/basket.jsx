@@ -23,7 +23,7 @@ class basket extends PureComponent {
             <div className="row mt-4">
               <div className="col-md-8">
               {this.props.basketList.map((basket,index) => 
-                <BasketList basketList={basket} key={index} />
+                <BasketList basketList={basket} basketCount={this.props.basketList.length} index={index} key={index} />
               )}
               </div>
               <div className="col-md-4">

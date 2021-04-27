@@ -159,6 +159,9 @@ textarea{
   border-radius: 6px;
   color: white;
   flex-shrink: 0;
+  @media (max-width: $mobile) {
+    font-size: 9px;
+  }
 }
 
 .cursor-pointer{
@@ -222,6 +225,9 @@ textarea{
   height: 40px;
   border-radius: 6px;
   font-size: 17px;
+  @media (max-width: $mobile) {
+    height: 28px;
+  }
 }
 
 .ant-input-affix-wrapper{
