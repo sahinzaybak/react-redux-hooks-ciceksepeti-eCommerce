@@ -33,7 +33,6 @@ export default (state = initialState, action) => {
       }
     case BASKET_ITEM_DELETE:
       const newBasketList = [...state.basketList]
-      debugger;
       newBasketList.splice(action.payload, 1);
       return{
         ...state,

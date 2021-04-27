@@ -46,7 +46,7 @@ class Payment extends PureComponent {
             </div>
             <div>
             <Link to="/urunler">
-            <button className="button start-shopping">Hemen Alışverişe Başla</button>
+              <button className="button start-shopping">Hemen Alışverişe Başla</button>
             </Link>
           </div>
         </div> 

@@ -41,7 +41,7 @@ class previousOrder extends PureComponent {
               <h5>Önceden yaptığınız alışverişiniz bulunmamaktadır.</h5>
             </div>
             <div>
-            <Link to="/">
+            <Link to="/urunler">
               <button className="button start-shopping">Hemen Alışverişe Başla</button>
             </Link>
             </div>
