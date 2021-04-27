@@ -72,7 +72,7 @@ const Payment = () => {
     <div className="payment basket-page">
         <Form name="nest-messages" validateMessages={validateMessages} onFinish={completePayment.bind(this)}>
         <div className="row">
-          <div className="col-md-12 pr-5">
+          <div className="col-md-12 mr-0 pr-md-5">
             <div className="d-flex justify-content-between flex-column flex-md-row">
               <Form.Item name="number" label="Telefon No" rules={[{required: true,type: "number"}]}>
                 <InputNumber placeholder="Telefon No" />
@@ -96,8 +96,12 @@ const Payment = () => {
                 </Select>
               </Form.Item>
             </div>
+            <div className="d-flex justify-content-end">
+              <button className="button green mt-1 mb-4 mb-md-0 mt-md-3">Ödemeyi Tamamla</button>
+            </div>
+           
           </div>
-        <button className="button green mt-3 w-25 ml-auto mr-5">Ödemeyi Tamamla</button>
+    
         </div>
         </Form>  
     </div>
