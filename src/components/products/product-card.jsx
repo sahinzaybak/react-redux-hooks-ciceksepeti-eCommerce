@@ -15,25 +15,17 @@ const ProductCard = ({product}) => {
   const [loading, setLoading] = useState(false)
   const [showCount, setShowCount] = useState(false)
   const [addBasketText, setAddBasketText] = useState("Sepete Ekle")
-  const [defaultPrice, setDefaultPrice] = useState()
   let [productCount, setProductCount] = useState(1)
 
   async function addBasket(){ //sepete ekle
-    await dispatch(fetchAddBasket(product, defaultPrice));
+    await dispatch(fetchAddBasket(product, product.fixedPrice));
     localStorage.setItem("basket", JSON.stringify(basketList)); 
   }
 
   function actionCount (productCount, productId){ //Ürün adedi arttır / azalt
-    let newPrice = defaultPrice * productCount
+    let newPrice = product.fixedPrice * productCount
     dispatch(fetchBasketItemActionCount(newPrice, productCount, productId));
   }
-  
-  useEffect(() => {
-    setDefaultPrice('')
-    setTimeout(() => {
-      setDefaultPrice(product.price.toFixed(2))
-    }, 0);
-  }, []);
 
   useEffect(() => {
     const isProductinBasketBool = basketList.some(item => item.product.id == product.id) //basket'te varsa ürünü seçili yap.
@@ -65,7 +57,7 @@ const ProductCard = ({product}) => {
             <h2 className="product-list__name mt-2" alt={product.name}>{product.name}</h2>
             </>
           <>
-          <p className="product-list__price mb-1">{defaultPrice}₺</p>
+          <p className="product-list__price mb-1">{(product.fixedPrice).toFixed(2)}₺</p>
           {!showCount ?
             <div className="button product-list__add-basket d-flex-center" onClick={() => {
               setAddBasketText(''); 
