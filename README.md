@@ -1,4 +1,14 @@
-# React-Redux-Hooks Çiçek Sepeti eCommerce
+# React - Redux - Hooks Çiçek Sepeti eCommerce
+Canlı test linki: https://react-redux-hooks-ciceksepeti-e-commerce.vercel.app/
+
+Selamlar herkese👋  React - Redux ve Hooks kullanarak "Çiçek Sepeti" benzeri bir E-Ticaret uygulaması geliştirdim.  
+
+Baya detaylı ve güzel bir çalışma oldu aslında, projeyi geliştirirken ürün satın alma süreçlerini en ufak detayına kadar geliştirmeye çalıştım.
+
+API'sini kendi oluşturduğum projede mockapi.io'dan yararlandım, oluşturduğum API'lerimi oraya yükleyip, tüm CRUD işlemlerimi buraya istek atarak hallediyorum.
+
+Uygulamayı daha da geliştirmek adına fikir vermek isteyen arkadaşlar olursa bana Linkedin aracılığıyla ulaşabilirler 🙂
+
 
 ## Build Setup
 
