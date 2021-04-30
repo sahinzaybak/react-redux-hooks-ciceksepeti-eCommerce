@@ -17,7 +17,7 @@ const AppArea = () => {
              <img src={qrCode} alt=""/>
            </div>
            <div className="footer-app__desc">
-             <p className="footer-app__text">Çiçek Sepeti Mobil Uygulamayı İndirin</p>
+             <p className="footer-app__text">Çiçek Bahçem Mobil Uygulamayı İndirin</p>
              <span className="footer-app__small-text">Mobil Uygulamayı QR Kod ile İndirin.</span>
            </div>
          </div>
