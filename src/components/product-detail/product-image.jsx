@@ -6,7 +6,7 @@ const ProductImage = ({productImage}) => {
     <div className="col-md-6">
       <div className="product-detail__image d-flex-center">
         {imageLoaded ? null :
-            <img src="../../assets/images/load-image.png" style={{
+            <img src="https://blog.ciceksepeti.com/wp-content/uploads/2020/05/CS_Logo.png" style={{
               width: "300px",
               height: "300px",
               objectFit:'cover',

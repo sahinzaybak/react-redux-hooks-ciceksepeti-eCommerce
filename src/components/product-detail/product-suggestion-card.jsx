@@ -59,8 +59,8 @@ const ProductCard = ({product}) => {
               dispatch({ type: 'SUGGESSTION_PRODUCT_CLEAR' , payload: [] })
             }}>
               {/* <LazyLoadImage src={product.image}  alt={product.name} */}
-              {imageLoaded==false ? null :
-                <img src="../../assets/images/load-image.png" style={{
+              {imageLoaded ? null :
+                <img src="https://blog.ciceksepeti.com/wp-content/uploads/2020/05/CS_Logo.png" style={{
                   width: "250px",
                   height: "170px",
                   objectFit:'cover',
