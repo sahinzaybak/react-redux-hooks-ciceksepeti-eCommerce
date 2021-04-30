@@ -6,7 +6,6 @@ import facebook from '../../assets/images/social-icons/facebook.svg'
 import twitter from '../../assets/images/social-icons/twitter.svg'
 import instagram from '../../assets/images/social-icons/instagram.svg'
 import youtube from '../../assets/images/social-icons/youtube.svg'
-import unkown from '../../assets/images/social-icons/unkown.svg'
 
 const AppArea = () => {
     return (
@@ -24,8 +23,8 @@ const AppArea = () => {
               </div>
             </div>
             <p className="footer-main__kvkk">
-                CicekSepeti.com olarak kişisel verilerinizin gizliliğini {<br />} önemsiyoruz. 6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında oluşturduğumuz aydınlatma metnine buradan ulaşabilirsiniz.
-              </p>
+              ÇiçekBahçem.com olarak kişisel verilerinizin gizliliğini {<br />} önemsiyoruz. 6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında oluşturduğumuz aydınlatma metnine buradan ulaşabilirsiniz.
+            </p>
           </div>
         </div>
         <div className="col-md-7">
@@ -46,7 +45,7 @@ const AppArea = () => {
                 <h4 className="footer-link__title">Kurumsal</h4>
                 <a href="#">Hakkımızda</a>
                 <a href="#">Kariyer</a>
-                <a href="#">ÇiçekSepeti’nde Satış Yap</a>
+                <a href="#">ÇiçekBahçem’de Satış Yap</a>
                 <a href="#">Kurumsal Müşterilerimiz</a>
                 <a href="#">Reklamlarımız</a>
                 <a href="#">Basında Biz</a>

@@ -31,7 +31,7 @@ class products extends PureComponent {
   render() {
     return (
       <div>
-        <BlueTitle text="Çiçek Sepeti" />
+        <BlueTitle text="Çiçek Bahçesi" />
         <BreadCrumb />
         <Categories categoryList={this.props.categoryList} />
         <ProductList productList={this.props.productList} />

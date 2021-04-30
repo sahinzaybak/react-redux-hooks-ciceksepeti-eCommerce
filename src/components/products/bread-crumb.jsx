@@ -5,7 +5,7 @@ const BreadCrumb = () => {
   return (
     <div className="bread-crumb d-flex align-items-center">
       <div className="custom-container">
-        <p className="bread-crumb__text">Çiçeksepeti {'>'} <span className="bread-crumb__text--active"> Ürünler</span></p>
+        <p className="bread-crumb__text">Çiçek Bahçesi {'>'} <span className="bread-crumb__text--active"> Ürünler</span></p>
       </div>
     </div>
   );
