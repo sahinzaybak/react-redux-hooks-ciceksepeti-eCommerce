@@ -79,7 +79,11 @@
     font-weight: $fw-600;
     border-radius: 22px;
     border: 1px solid $blue-main;
+    transition: all .3s;
     cursor: pointer;
+    &:hover{
+      background-color: #064dc314;
+    }
   }
   .react-rater{
     text-align: right;
