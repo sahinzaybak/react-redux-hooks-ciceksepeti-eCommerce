@@ -1,4 +1,4 @@
-import React, {useEffect}from 'react';
+import React, {useState,useEffect}from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import shoppBag from '../../assets/images/shop-bag.svg'
 
@@ -9,6 +9,7 @@ import {previousOrderStorage} from '../../store/actions/previousOrder'
 let basketList,previousOrderList
 const Basket = () => {
   const dispatch = useDispatch() 
+  const [totalCount, setTotalCount] = useState(0)
   basketList = useSelector(state => state.basket.basketList)
   previousOrderList = useSelector(state => state.previousOrder.previousOrderList)
 
@@ -17,6 +18,10 @@ const Basket = () => {
 
   if(previousOrderList.length != 0)
      localStorage.setItem("previous-order", JSON.stringify(previousOrderList)); //state prevOrderList yenilendiğinde localStorage'de yenilenir.
+
+  useEffect(() => { 
+    setTotalCount(basketList.reduce((a,v) =>  a + v.count, 0)) //Toplam ürün adedi
+  },[basketList])
 
   useEffect(() => {
     if(JSON.parse(localStorage.getItem("basket")) != null) //localStorge basket bilgilerini al ve basketList state'ni doldur.
@@ -34,7 +39,7 @@ const Basket = () => {
       <img src={shoppBag} className="mr-1" alt=""/>
       <p className="header-bag__text">Sepetim</p>
       <span className="header-bag__count position-absolute d-flex-center">
-        {basketList != null ? basketList.length : "0"} 
+        {basketList != null ? totalCount : "0"} 
       </span>
     </div>
   );
