@@ -25,6 +25,10 @@ const ProductCard = ({product}) => {
   function actionCount (productCount, productId){ //Ürün adedi arttır / azalt
     let newPrice = product.fixedPrice * productCount
     dispatch(fetchBasketItemActionCount(newPrice, productCount, productId));
+    document.body.classList.add("add-basket");
+    setTimeout(() => {
+      document.body.classList.remove("add-basket");
+    }, 500);
   }
 
   useEffect(() => {

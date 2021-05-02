@@ -108,6 +108,7 @@
     cursor: pointer;
     transition: all .3s;
     height: 50px;
+    
     @media (max-width: $tabletScreen) {
       position: fixed;
       bottom: 10px;
@@ -220,5 +221,21 @@
     @media (max-width: $tabletScreen) {
       display: none !important;
     }
+  }
+}
+
+.add-basket{
+  .header-bag{
+    animation: shadow-pulse 0.6s infinite;
+  }
+}
+
+@keyframes shadow-pulse
+{
+  0% {
+    box-shadow: 0 0 0 0px #064dc36b;
+  }
+  100% {
+    box-shadow: 0 0 0 15px #50b64814;
   }
 }
